@@ -1,0 +1,57 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+type CounterProps = {
+  end: number;
+  suffix?: string;
+  duration?: number;
+  label: string;
+};
+
+export default function Counter({ end, suffix = "", duration = 2, label }: CounterProps) {
+  const countRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (!countRef.current) return;
+
+    const el = countRef.current;
+    
+    const counter = { val: 0 };
+    
+    const animation = gsap.to(counter, {
+      val: end,
+      duration: duration,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 90%",
+        toggleActions: "play none none none"
+      },
+      onUpdate: () => {
+        if (el) {
+          el.innerText = Math.floor(counter.val).toLocaleString() + suffix;
+        }
+      }
+    });
+
+    return () => {
+      animation.kill();
+    };
+  }, [end, suffix, duration]);
+
+  return (
+    <div className="flex flex-col gap-2 border-l-2 border-foreground/10 pl-6">
+      <span ref={countRef} className="text-5xl md:text-7xl font-bold font-heading tracking-tighter">
+        0{suffix}
+      </span>
+      <span className="text-sm uppercase tracking-widest opacity-60 font-medium max-w-[150px]">
+        {label}
+      </span>
+    </div>
+  );
+}
