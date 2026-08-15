@@ -1,10 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 type CounterProps = {
   end: number;
@@ -16,7 +19,7 @@ type CounterProps = {
 export default function Counter({ end, suffix = "", duration = 2, label }: CounterProps) {
   const countRef = useRef<HTMLSpanElement>(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     if (!countRef.current) return;
 
     const el = countRef.current;
@@ -42,7 +45,7 @@ export default function Counter({ end, suffix = "", duration = 2, label }: Count
     return () => {
       animation.kill();
     };
-  }, [end, suffix, duration]);
+  }, { dependencies: [end, suffix, duration], scope: countRef });
 
   return (
     <div className="flex flex-col gap-2 border-l-2 border-foreground/10 pl-6">

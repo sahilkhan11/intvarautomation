@@ -1,11 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 type TextRevealProps = {
   text: string;
@@ -26,53 +29,51 @@ export default function TextReveal({
 }: TextRevealProps) {
   const textRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     if (!textRef.current) return;
     const currentRef = textRef.current;
 
-    let splitText: SplitType;
+    // Split the text into lines, words, or characters
+    const splitText = new SplitType(currentRef, {
+      types: splitBy,
+      tagName: 'span'
+    });
+    const elements = 
+      splitBy === "words" ? splitText.words : 
+      splitBy === "lines" ? splitText.lines : 
+      splitText.chars;
+    
+    if (!elements || elements.length === 0) return;
 
-    const ctx = gsap.context(() => {
-      // Split the text into lines, words, or characters
-      splitText = new SplitType(currentRef, { types: splitBy });
-      const elements = 
-        splitBy === "words" ? splitText.words : 
-        splitBy === "lines" ? splitText.lines : 
-        splitText.chars;
-      
-      if (!elements || elements.length === 0) return;
+    // Set initial state
+    gsap.set(elements, {
+      yPercent: 100,
+      opacity: 0,
+    });
 
-      // Set initial state
-      gsap.set(elements, {
-        yPercent: 100,
-        opacity: 0,
-      });
-
-      // Create the animation
-      gsap.to(elements, {
-        yPercent: 0,
-        opacity: 1,
-        duration: 1.2,
-        stagger: 0.08,
-        ease: "power4.out",
-        delay: triggerOnLoad ? delay : 0,
-        scrollTrigger: triggerOnLoad
-          ? undefined
-          : {
-              trigger: currentRef,
-              start: "top 85%", // trigger when element top hits 85% of viewport
-              toggleActions: "play none none none",
-            },
-      });
-    }, textRef);
+    // Create the animation
+    gsap.to(elements, {
+      yPercent: 0,
+      opacity: 1,
+      duration: 1.2,
+      stagger: 0.08,
+      ease: "power4.out",
+      delay: triggerOnLoad ? delay : 0,
+      scrollTrigger: triggerOnLoad
+        ? undefined
+        : {
+            trigger: currentRef,
+            start: "top 85%", // trigger when element top hits 85% of viewport
+            toggleActions: "play none none none",
+          },
+    });
 
     return () => {
-      ctx.revert();
       if (splitText) {
         splitText.revert();
       }
     };
-  }, [splitBy, triggerOnLoad, delay]);
+  }, { dependencies: [splitBy, triggerOnLoad, delay], scope: textRef });
 
   return (
     <Component ref={textRef} className={className}>

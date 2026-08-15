@@ -1,19 +1,21 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import TextReveal from "./TextReveal";
-import Icon from "./Icon";
 import Link from "next/link";
 import { servicePillars } from "../content/services";
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function Services() {
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const cardsRef = useRef<(HTMLAnchorElement | null)[]>([]);
 
-  useEffect(() => {
+  useGSAP(() => {
     cardsRef.current.forEach((card) => {
       if (card) {
         gsap.fromTo(card, 
@@ -32,7 +34,7 @@ export default function Services() {
         );
       }
     });
-  }, []);
+  }, { scope: cardsRef });
 
   return (
     <section className="relative bg-background text-foreground py-32 md:py-48 px-4 md:px-8 lg:px-12 overflow-hidden">
@@ -57,7 +59,7 @@ export default function Services() {
             <Link 
               key={service.id}
               href={`/services#${service.slug}`}
-              ref={(el) => { if (el) cardsRef.current[index] = el as any; }}
+              ref={(el) => { if (el) cardsRef.current[index] = el; }}
               className={`relative border rounded-3xl p-8 md:p-12 flex flex-col gap-12 group transition-all bg-background/50 backdrop-blur-sm ${
                 service.isFlagship 
                   ? 'border-foreground/40 hover:border-foreground/60 shadow-[0_0_40px_rgba(255,255,255,0.03)]' 
@@ -78,6 +80,27 @@ export default function Services() {
               </div>
             </Link>
           ))}
+        </div>
+        {/* Internal Linking to Specific Verticals */}
+        <div className="mt-16 flex flex-col items-center gap-8 border-t border-foreground/10 pt-16">
+          <span className="text-sm font-medium uppercase tracking-widest opacity-60">Explore Our Specialized Services</span>
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8">
+            <Link href="/services/website-development" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
+              Website Development
+            </Link>
+            <Link href="/services/software-development" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
+              Software Development
+            </Link>
+            <Link href="/services/android-app-development" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
+              Android App Development
+            </Link>
+            <Link href="/services/ai-solutions" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
+              AI Solutions
+            </Link>
+            <Link href="/services/business-automation" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
+              Business Automation
+            </Link>
+          </div>
         </div>
       </div>
     </section>

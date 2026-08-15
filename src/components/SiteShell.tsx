@@ -14,6 +14,16 @@ export function useSound() {
   return useContext(SoundContext);
 }
 
+export const PopupContext = createContext({
+  isPopupOpen: false,
+  openPopup: () => {},
+  closePopup: () => {},
+});
+
+export function usePopup() {
+  return useContext(PopupContext);
+}
+
 import { MotionConfig } from "framer-motion";
 
 export default function SiteShell({
@@ -22,7 +32,11 @@ export default function SiteShell({
   children: React.ReactNode;
 }) {
   const [soundEnabled, setSoundEnabled] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const lenisRef = useRef<Lenis | null>(null);
+
+  const openPopup = () => setIsPopupOpen(true);
+  const closePopup = () => setIsPopupOpen(false);
 
   useEffect(() => {
     if (lenisRef.current) return;
@@ -37,6 +51,8 @@ export default function SiteShell({
       // We can disable smooth scroll if reduced motion is preferred
       duration: prefersReducedMotion ? 0 : 1.2,
       smoothWheel: !prefersReducedMotion,
+      syncTouch: true,
+      touchMultiplier: 2,
     });
     lenisRef.current = lenis;
 
@@ -49,7 +65,13 @@ export default function SiteShell({
     gsap.ticker.add(update);
     gsap.ticker.lagSmoothing(0);
 
+    // Refresh ScrollTrigger after initial layout shift from overflow fixes
+    const timeout = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500);
+
     return () => {
+      clearTimeout(timeout);
       gsap.ticker.remove(update);
       lenis.destroy();
       lenisRef.current = null;
@@ -60,9 +82,11 @@ export default function SiteShell({
 
   return (
     <SoundContext.Provider value={{ soundEnabled, toggleSound }}>
-      <MotionConfig reducedMotion="user">
-        {children}
-      </MotionConfig>
+      <PopupContext.Provider value={{ isPopupOpen, openPopup, closePopup }}>
+        <MotionConfig reducedMotion="user">
+          {children}
+        </MotionConfig>
+      </PopupContext.Provider>
     </SoundContext.Provider>
   );
 }

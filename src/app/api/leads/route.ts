@@ -4,7 +4,14 @@ import path from 'path';
 
 const getFilePath = () => path.join(process.cwd(), 'leads.json');
 
-async function readLeads() {
+interface Lead {
+  id: string;
+  businessName: string;
+  phoneNumber: string;
+  timestamp: string;
+}
+
+async function readLeads(): Promise<Lead[]> {
   const filePath = getFilePath();
   try {
     const fileContent = await fs.readFile(filePath, 'utf-8');
@@ -17,7 +24,7 @@ async function readLeads() {
   }
 }
 
-async function writeLeads(leads: any[]) {
+async function writeLeads(leads: Lead[]) {
   const filePath = getFilePath();
   await fs.writeFile(filePath, JSON.stringify(leads, null, 2), 'utf-8');
 }
@@ -70,7 +77,7 @@ export async function PUT(request: Request) {
     }
 
     const leads = await readLeads();
-    const leadIndex = leads.findIndex((l: any) => l.id === id);
+    const leadIndex = leads.findIndex((l: Lead) => l.id === id);
 
     if (leadIndex === -1) {
       return NextResponse.json({ error: 'Lead not found' }, { status: 404 });
@@ -97,7 +104,7 @@ export async function DELETE(request: Request) {
 
     let leads = await readLeads();
     const initialLength = leads.length;
-    leads = leads.filter((l: any) => l.id !== id);
+    leads = leads.filter((l: Lead) => l.id !== id);
 
     if (leads.length === initialLength) {
       return NextResponse.json({ error: 'Lead not found' }, { status: 404 });

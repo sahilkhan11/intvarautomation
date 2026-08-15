@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import TextReveal from "./TextReveal";
 import Image from "next/image";
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 import Section from "./Section";
 
 export default function DesignExplorations() {
@@ -14,48 +17,42 @@ export default function DesignExplorations() {
   const stripRef = useRef<HTMLDivElement>(null);
   const scrollWrapperRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     if (!containerRef.current || !stripRef.current || !scrollWrapperRef.current) return;
 
-    const mm = gsap.matchMedia();
-
-    mm.add("(min-width: 768px)", () => {
-      const stripWidth = stripRef.current!.scrollWidth;
-      
-      // 3D straighten + horizontal scroll scrub
-      const tween = gsap.fromTo(stripRef.current, 
-        {
-          x: window.innerWidth * 0.1, 
-          rotateX: 30,
-          rotateY: -15,
-          rotateZ: 5,
-          scale: 0.8,
-        },
-        {
-          x: -(stripWidth - window.innerWidth + window.innerWidth * 0.1),
-          rotateX: 0,
-          rotateY: 0,
-          rotateZ: 0,
-          scale: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: scrollWrapperRef.current,
-            start: "top top",
-            end: () => `+=${stripWidth}`,
-            pin: true,
-            scrub: 1,
-            invalidateOnRefresh: true,
-          }
+    const stripWidth = stripRef.current!.scrollWidth;
+    
+    // 3D straighten + horizontal scroll scrub
+    const tween = gsap.fromTo(stripRef.current, 
+      {
+        x: window.innerWidth * 0.1, 
+        rotateX: 30,
+        rotateY: -15,
+        rotateZ: 5,
+        scale: 0.8,
+      },
+      {
+        x: -(stripWidth - window.innerWidth + window.innerWidth * 0.1),
+        rotateX: 0,
+        rotateY: 0,
+        rotateZ: 0,
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: scrollWrapperRef.current,
+          start: "top top",
+          end: () => `+=${stripWidth}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
         }
-      );
+      }
+    );
 
-      return () => {
-        tween.kill();
-      };
-    });
-
-    return () => mm.revert();
-  }, []);
+    return () => {
+      tween.kill();
+    };
+  }, { scope: containerRef });
 
   return (
     <Section variant="light" className="border-t border-foreground/10 relative overflow-hidden" ref={containerRef}>

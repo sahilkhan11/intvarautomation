@@ -2,7 +2,6 @@ import PageHero from "@/components/PageHero";
 import Section from "@/components/Section";
 import Counter from "@/components/Counter";
 import TextReveal from "@/components/TextReveal";
-import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -27,7 +26,7 @@ export default function AboutPage() {
           
           {/* Who We Are */}
           <div className="flex flex-col gap-6">
-            <span className="text-sm font-medium uppercase tracking-widest opacity-60">Who We Are</span>
+            <h2 className="text-sm font-medium uppercase tracking-widest opacity-60">Who We Are</h2>
             <TextReveal 
               as="p"
               text="Intvar Automation is a tight-knit team of 5-6 people based in Alwar, Rajasthan. We started this studio to help local clinics, shops, and traders escape the spreadsheet chaos and missed-call logs. We don't sell bloated software or vanity metrics—we build tailored, real AI workflows that automatically manage your back-office so you can focus entirely on running your business."
@@ -81,20 +80,20 @@ export default function AboutPage() {
       {/* 5. Dark CTA Band */}
       <Section variant="dark" className="py-32 overflow-hidden relative">
         <div className="px-4 md:px-8 lg:px-12 max-w-7xl mx-auto w-full flex flex-col gap-12 relative z-10 items-center text-center">
-          <span className="text-sm font-medium uppercase tracking-widest opacity-60">Your Next Step</span>
+          <h2 className="text-sm font-medium uppercase tracking-widest opacity-60">Your Next Step</h2>
           
           <TextReveal 
             as="h2"
-            text="Ready to build something bold?"
+            text="Ready to stop losing leads?"
             splitBy="words"
             className="text-5xl md:text-7xl lg:text-8xl font-bold font-heading uppercase tracking-tighter leading-[0.85] max-w-4xl"
           />
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
-            <Link href="/contact" className="group flex items-center justify-center gap-4 w-fit px-8 py-5 rounded-full bg-white text-black font-medium hover:scale-105 transition-transform duration-300">
+            <a href="tel:+917372908326" className="group flex items-center justify-center gap-4 w-fit px-8 py-5 rounded-full bg-white text-black font-medium hover:scale-105 transition-transform duration-300">
               <span className="uppercase tracking-widest text-sm font-bold">Talk to a Consultant</span>
               <span className="group-hover:translate-x-1 transition-transform">→</span>
-            </Link>
+            </a>
           </div>
         </div>
         

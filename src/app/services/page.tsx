@@ -6,9 +6,10 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import PageHero from "@/components/PageHero";
 import Section from "@/components/Section";
 import TextReveal from "@/components/TextReveal";
-import Icon from "@/components/Icon";
 import Link from "next/link";
 import { servicePillars } from "@/content/services";
+import ServiceSchema from "@/components/seo/ServiceSchema";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,6 +42,12 @@ export default function ServicesPage() {
 
   return (
     <main className="flex min-h-screen flex-col">
+      <BreadcrumbSchema 
+        items={[
+          { name: "Home", item: "https://intvarautomation.online/" },
+          { name: "Services", item: "https://intvarautomation.online/services" }
+        ]}
+      />
       <PageHero 
         variant="dark"
         eyebrow="OUR SERVICES"
@@ -61,6 +68,10 @@ export default function ServicesPage() {
                   : 'border-foreground/10 hover:border-foreground/30'
               }`}
             >
+              <ServiceSchema 
+                serviceName={service.title} 
+                description={service.description} 
+              />
               {/* Left Side: Title & Outcome */}
               <div className="flex flex-col gap-6 lg:w-5/12">
                 {service.isFlagship && (
@@ -97,7 +108,7 @@ export default function ServicesPage() {
                 {/* Highlighted Result Callout */}
                 <div className="border-l-2 border-foreground/30 pl-6 py-2 my-2">
                   <p className="text-lg font-medium opacity-90 italic">
-                    "{service.result}"
+                    &quot;{service.result}&quot;
                   </p>
                 </div>
                 
@@ -132,16 +143,38 @@ export default function ServicesPage() {
             </div>
           ))}
         </div>
+        
+        {/* Internal Linking to Specific Verticals */}
+        <div className="mt-24 max-w-7xl mx-auto flex flex-col items-center gap-8 border-t border-foreground/10 pt-16">
+          <span className="text-sm font-medium uppercase tracking-widest opacity-60">Deep Dive into Our Specialized Capabilities</span>
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8">
+            <Link href="/services/web-development" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
+              Web Development Solutions
+            </Link>
+            <Link href="/services/android-app-development" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
+              Android App Development
+            </Link>
+            <Link href="/services/ai-automation" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
+              WhatsApp & AI Automation
+            </Link>
+            <Link href="/services/custom-software-development" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
+              Custom Digital Solutions
+            </Link>
+            <Link href="/services/ai-consultancy" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
+              AI Consultancy Services
+            </Link>
+          </div>
+        </div>
       </Section>
 
       {/* Dark CTA Band */}
       <Section variant="dark" className="py-32 overflow-hidden relative border-t border-foreground/10">
         <div className="px-4 md:px-8 lg:px-12 max-w-7xl mx-auto w-full flex flex-col gap-12 relative z-10 items-center text-center">
-          <span className="text-sm font-medium uppercase tracking-widest opacity-60">Your Next Step</span>
+          <h2 className="text-sm font-medium uppercase tracking-widest opacity-60">Your Next Step</h2>
           
           <TextReveal 
             as="h2"
-            text="Ready to build something bold?"
+            text="Ready to stop losing leads?"
             splitBy="words"
             className="text-5xl md:text-7xl lg:text-8xl font-bold font-heading uppercase tracking-tighter leading-[0.85] max-w-4xl"
           />

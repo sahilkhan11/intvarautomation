@@ -12,6 +12,7 @@ export function generateStaticParams() {
 }
 
 import { Metadata } from "next";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const project = projects.find((p) => p.slug === params.slug);
@@ -35,8 +36,31 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
     notFound();
   }
 
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": project.title,
+    "description": project.oneLiner,
+    "image": project.imageUrl,
+    "publisher": {
+      "@type": "Organization",
+      "name": "Intvar Automation"
+    }
+  };
+
   return (
     <main className="flex min-h-screen flex-col bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+      />
+      <BreadcrumbSchema 
+        items={[
+          { name: "Home", item: "https://intvarautomation.online/" },
+          { name: "Work", item: "https://intvarautomation.online/work" },
+          { name: project.title, item: `https://intvarautomation.online/work/${project.slug}` }
+        ]}
+      />
       <PageHero 
         variant="dark"
         eyebrow={project.tags.join(" / ")}

@@ -43,7 +43,7 @@ const linkVariants: any = {
   })
 };
 
-const links = ["Work", "Services", "About", "Contact", "Blog"];
+const links = ["Work", "Services", "About", "Demos", "Contact", "Blog"];
 
 export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
   return (
@@ -93,7 +93,7 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
                   className="flex flex-col gap-2"
                 >
                   <span className="text-sm font-medium opacity-50 uppercase tracking-widest">Business Enquiry</span>
-                  <a href="mailto:contact@intvarautomation.online" className="text-xl md:text-2xl hover:underline underline-offset-4">contact@intvarautomation.online</a>
+                  <a href="mailto:sahil.f09f@gmail.com" className="text-xl md:text-2xl hover:underline underline-offset-4">sahil.f09f@gmail.com</a>
                   <a href="tel:+917372908326" className="text-xl md:text-2xl hover:underline underline-offset-4">+91 7372908326</a>
                 </motion.div>
               </div>

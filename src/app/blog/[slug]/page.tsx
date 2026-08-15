@@ -26,6 +26,8 @@ export function generateStaticParams() {
 }
 
 import { Metadata } from "next";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
+import { generateArticleSchema } from "@/lib/seo/schema";
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const post = getPostBySlug(params.slug);
@@ -34,10 +36,10 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   }
   return {
     title: `${post.meta.title} | Intvar Suite`,
-    description: post.meta.description || `Read about ${post.meta.title}`,
+    description: post.meta.excerpt || `Read about ${post.meta.title}`,
     openGraph: {
       title: post.meta.title,
-      description: post.meta.description || `Read about ${post.meta.title}`,
+      description: post.meta.excerpt || `Read about ${post.meta.title}`,
     },
   };
 }
@@ -51,8 +53,27 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   const { meta, content } = post;
 
+  const articleSchema = generateArticleSchema({
+    headline: meta.title,
+    description: meta.excerpt,
+    datePublished: meta.date,
+    authorName: "Sahil / Intvar Automation",
+    image: "/images/blog-placeholder.jpg"
+  });
+
   return (
     <main className="flex min-h-screen flex-col bg-[#f4f4f4]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <BreadcrumbSchema 
+        items={[
+          { name: "Home", item: "https://intvarautomation.online/" },
+          { name: "Blog", item: "https://intvarautomation.online/blog" },
+          { name: meta.title, item: `https://intvarautomation.online/blog/${post.meta.slug}` }
+        ]}
+      />
       <PageHero 
         variant="dark"
         eyebrow={meta.tags.join(" / ")}

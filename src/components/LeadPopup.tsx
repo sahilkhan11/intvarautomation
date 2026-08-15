@@ -1,44 +1,58 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePopup } from "./SiteShell";
 
 export default function LeadPopup() {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isPopupOpen, openPopup, closePopup } = usePopup();
   const [businessName, setBusinessName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const hasSubmitted = useRef(false);
 
   useEffect(() => {
-    // Check if they already closed or submitted it
-    const hasSeenPopup = localStorage.getItem("intvar_lead_popup_seen");
-    if (!hasSeenPopup) {
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-      }, 3000); // 3 seconds delay
-      return () => clearTimeout(timer);
-    }
-  }, []);
+    const triggerPopup = () => {
+      if (!hasSubmitted.current) {
+        openPopup();
+      }
+    };
+
+    const timer1 = setTimeout(triggerPopup, 15000); // 15 seconds
+    const timer2 = setTimeout(triggerPopup, 40000); // 40 seconds
+    const timer3 = setTimeout(triggerPopup, 70000); // 70 seconds
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+    };
+  }, [openPopup]);
 
   const handleClose = () => {
-    setIsOpen(false);
-    localStorage.setItem("intvar_lead_popup_seen", "true");
+    closePopup();
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!businessName || !phoneNumber) return;
-    
+
     setStatus("loading");
     try {
-      const res = await fetch("/api/leads", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ businessName, phoneNumber }),
+        body: JSON.stringify({
+          access_key: "80399a07-8f94-443c-9ea8-325fde31d962",
+          subject: "New Free Pilot Lead from Website",
+          businessName,
+          phoneNumber
+        }),
       });
 
       if (res.ok) {
         setStatus("success");
+        hasSubmitted.current = true;
         setTimeout(() => {
           handleClose();
         }, 2000);
@@ -52,7 +66,7 @@ export default function LeadPopup() {
 
   return (
     <AnimatePresence>
-      {isOpen && (
+      {isPopupOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <motion.div
             initial={{ opacity: 0 }}
@@ -70,7 +84,7 @@ export default function LeadPopup() {
           >
             <button
               onClick={handleClose}
-              className="absolute right-4 top-4 text-foreground/50 hover:text-foreground transition-colors"
+              className="absolute right-2 top-2 p-3 text-foreground/50 hover:text-foreground transition-colors"
               aria-label="Close"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -122,7 +136,7 @@ export default function LeadPopup() {
                       placeholder="+91 00000 00000"
                     />
                   </div>
-                  
+
                   {status === "error" && (
                     <span className="text-xs text-red-500">Something went wrong. Please try again.</span>
                   )}

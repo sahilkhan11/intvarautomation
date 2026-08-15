@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import TextReveal from "./TextReveal";
 import Link from "next/link";
+import { usePopup } from "./SiteShell";
 
 export default function Footer() {
   const [time, setTime] = useState<string>("");
+  const { openPopup } = usePopup();
 
   useEffect(() => {
     const updateTime = () => {
@@ -36,10 +38,10 @@ export default function Footer() {
         />
 
         <div className="mt-8 md:mt-12 flex flex-col sm:flex-row gap-4">
-          <Link href="mailto:contact@intvarautomation.online" className="group flex items-center justify-center gap-4 w-fit px-8 py-5 rounded-full bg-white text-black font-medium hover:scale-105 transition-transform duration-300">
+          <button onClick={openPopup} className="group flex items-center justify-center gap-4 w-fit px-8 py-5 rounded-full bg-white text-black font-medium hover:scale-105 transition-transform duration-300">
             <span className="uppercase tracking-widest text-sm font-bold">Claim Free Pilot</span>
             <span className="group-hover:translate-x-1 transition-transform">→</span>
-          </Link>
+          </button>
           <Link href="https://wa.me/917372908326" target="_blank" className="group flex items-center justify-center gap-4 w-fit px-8 py-5 rounded-full border border-white/20 hover:bg-white/10 text-white font-medium transition-colors duration-300">
             <span className="uppercase tracking-widest text-sm font-bold">WhatsApp Us</span>
           </Link>
@@ -53,10 +55,10 @@ export default function Footer() {
             <span>© {new Date().getFullYear()} Intvar Automation</span>
             <span>Alwar, Rajasthan — +91 7372908326</span>
           </div>
-          <div className="flex gap-8">
-            <Link href="/blog" className="hover:opacity-100 transition-opacity">Blog</Link>
-            <Link href="https://instagram.com/intvar.automate" target="_blank" className="hover:opacity-100 transition-opacity">Instagram</Link>
-            <Link href="https://youtube.com/@intvar.ai.solutions" target="_blank" className="hover:opacity-100 transition-opacity">YouTube</Link>
+          <div className="flex gap-4 md:gap-8 flex-wrap">
+            <Link href="/blog" className="hover:opacity-100 transition-opacity py-2 px-1">Blog</Link>
+            <Link href="https://instagram.com/intvar.automate" target="_blank" className="hover:opacity-100 transition-opacity py-2 px-1">Instagram</Link>
+            <Link href="https://youtube.com/@intvar.ai.solutions" target="_blank" className="hover:opacity-100 transition-opacity py-2 px-1">YouTube</Link>
           </div>
         </div>
       </div>
