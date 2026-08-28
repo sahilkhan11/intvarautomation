@@ -120,7 +120,7 @@ export default function LeadPopup() {
                       required
                       value={businessName}
                       onChange={(e) => setBusinessName(e.target.value)}
-                      className="rounded-xl border border-foreground/20 bg-background/50 px-4 py-3 text-sm text-black focus:border-foreground/50 focus:outline-none transition-colors"
+                      className="rounded-xl border border-foreground/20 bg-background/50 px-4 py-3 text-sm text-foreground focus:border-foreground/50 focus:outline-none transition-colors"
                       placeholder="e.g. Rathore Traders"
                     />
                   </div>
@@ -132,7 +132,7 @@ export default function LeadPopup() {
                       required
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
-                      className="rounded-xl border border-foreground/20 bg-background/50 px-4 py-3 text-sm text-black focus:border-foreground/50 focus:outline-none transition-colors"
+                      className="rounded-xl border border-foreground/20 bg-background/50 px-4 py-3 text-sm text-foreground focus:border-foreground/50 focus:outline-none transition-colors"
                       placeholder="+91 00000 00000"
                     />
                   </div>

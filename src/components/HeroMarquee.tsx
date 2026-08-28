@@ -5,14 +5,11 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 export default function HeroMarquee() {
   const scrollTextRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
     if (scrollTextRef.current) {
       gsap.to(scrollTextRef.current, {
         xPercent: -30,

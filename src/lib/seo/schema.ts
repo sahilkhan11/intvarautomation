@@ -8,6 +8,19 @@ export function generateLocalBusinessSchema(options: {
   openingHours: string;
   areaServed: string[];
   sameAs?: string[];
+  address?: {
+    "@type": string;
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion: string;
+    addressCountry: string;
+  } | Array<{
+    "@type": string;
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion: string;
+    addressCountry: string;
+  }>;
 }) {
   return {
     "@context": "https://schema.org",
@@ -15,6 +28,7 @@ export function generateLocalBusinessSchema(options: {
     "name": options.name,
     "image": options.image,
     "description": options.description,
+    "address": options.address,
     "areaServed": options.areaServed,
     "url": options.url,
     "telephone": options.telephone,

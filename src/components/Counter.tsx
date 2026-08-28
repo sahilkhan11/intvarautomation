@@ -1,13 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { useEffect, useRef, useState } from "react";
 
 type CounterProps = {
   end: number;
@@ -18,37 +11,59 @@ type CounterProps = {
 
 export default function Counter({ end, suffix = "", duration = 2, label }: CounterProps) {
   const countRef = useRef<HTMLSpanElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
-  useGSAP(() => {
-    if (!countRef.current) return;
+  useEffect(() => {
+    if (!containerRef.current || hasAnimated) return;
 
-    const el = countRef.current;
-    
-    const counter = { val: 0 };
-    
-    const animation = gsap.to(counter, {
-      val: end,
-      duration: duration,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: el,
-        start: "top 90%",
-        toggleActions: "play none none none"
-      },
-      onUpdate: () => {
-        if (el) {
-          el.innerText = Math.floor(counter.val).toLocaleString() + suffix;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setHasAnimated(true);
+          startAnimation();
+          observer.disconnect();
         }
-      }
-    });
+      },
+      { threshold: 0.1 }
+    );
 
-    return () => {
-      animation.kill();
+    observer.observe(containerRef.current);
+
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasAnimated, end, duration, suffix]);
+
+  const startAnimation = () => {
+    const el = countRef.current;
+    if (!el) return;
+
+    let startTime: number | null = null;
+    const isDecimal = !Number.isInteger(end) || (end === 5 && suffix === ".0");
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
+      
+      // ease-out cubic
+      const easeProgress = 1 - Math.pow(1 - progress, 3);
+      const currentVal = easeProgress * end;
+
+      const displayVal = isDecimal ? currentVal.toFixed(1) : Math.floor(currentVal);
+      el.innerText = displayVal + (isDecimal ? "" : suffix);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        el.innerText = (isDecimal ? end.toFixed(1) : end) + suffix;
+      }
     };
-  }, { dependencies: [end, suffix, duration], scope: countRef });
+
+    requestAnimationFrame(animate);
+  };
 
   return (
-    <div className="flex flex-col gap-2 border-l-2 border-foreground/10 pl-6">
+    <div ref={containerRef} className="flex flex-col gap-2 border-l-2 border-foreground/10 pl-6">
       <span ref={countRef} className="text-5xl md:text-7xl font-bold font-heading tracking-tighter">
         0{suffix}
       </span>

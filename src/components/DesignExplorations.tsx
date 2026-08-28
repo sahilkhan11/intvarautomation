@@ -7,9 +7,6 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import TextReveal from "./TextReveal";
 import Image from "next/image";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 import Section from "./Section";
 
 export default function DesignExplorations() {
@@ -18,6 +15,7 @@ export default function DesignExplorations() {
   const scrollWrapperRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
     if (!containerRef.current || !stripRef.current || !scrollWrapperRef.current) return;
 
     const stripWidth = stripRef.current!.scrollWidth;
@@ -52,7 +50,7 @@ export default function DesignExplorations() {
     return () => {
       tween.kill();
     };
-  }, { scope: containerRef });
+  }, { dependencies: [], scope: containerRef });
 
   return (
     <Section variant="light" className="border-t border-foreground/10 relative overflow-hidden" ref={containerRef}>
@@ -82,6 +80,7 @@ export default function DesignExplorations() {
                    src={`/images/concept ${i}.png`} 
                    alt={`Concept ${i}`} 
                    fill
+                   quality={75}
                    className="object-cover z-0"
                  />
               </div>

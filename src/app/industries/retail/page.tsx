@@ -35,7 +35,7 @@ export default function RetailIndustryPage() {
         variant="dark"
         eyebrow="RETAIL & SUPERMARKETS"
         title="Retail Billing Software Alwar"
-        subtitle="[COPY: ...]"
+        subtitle="Speed up your checkout counter and stop guessing what's in stock. We build blazing-fast retail billing and inventory management software that keeps Alwar's supermarkets and retail stores running efficiently."
       />
 
       <Section variant="dark" className="py-24">
@@ -44,14 +44,14 @@ export default function RetailIndustryPage() {
           <div className="flex flex-col gap-6">
             <h2 className="text-3xl font-heading font-bold uppercase">The Problem with Slow Checkouts</h2>
             <p className="opacity-70 leading-relaxed text-lg">
-              [COPY: ...]
+              Every extra second a customer waits at your checkout counter is a moment of frustration. Slow billing systems lead to abandoned purchases, unhappy shoppers, and stressed cashiers. Worse, when your inventory isn't synced in real-time, you end up dealing with unexpected stockouts of your best-selling items while over-ordering products that just sit on the shelves gathering dust. Running a retail business in Alwar requires speed and accuracy, not manual counting and endless ledgers.
             </p>
           </div>
 
           <div className="flex flex-col gap-6">
             <h2 className="text-3xl font-heading font-bold uppercase">Our High-Speed Retail POS</h2>
             <p className="opacity-70 leading-relaxed text-lg">
-              [COPY: ...]
+              We developed our Retail POS and inventory system with one goal: zero friction. The interface is clean, intuitive, and extremely fast, meaning your staff can start billing customers with almost no training. Meanwhile, the software automatically tracks every item sold, sending you instant low-stock alerts and generating daily profit reports directly to your phone. It's the ultimate upgrade from traditional, clunky billing machines—giving you complete control over your store's operations from anywhere.
             </p>
           </div>
 
@@ -60,11 +60,11 @@ export default function RetailIndustryPage() {
             <div className="flex flex-col gap-6">
               <div className="border-b border-foreground/10 pb-6">
                 <h3 className="font-bold text-xl mb-2">Can it handle thousands of SKUs smoothly?</h3>
-                <p className="opacity-70">[COPY: ...]</p>
+                <p className="opacity-70">Absolutely. We custom-build our software architecture to handle massive product catalogs. Whether you have 500 or 50,000 SKUs, the system searches, scans, and bills instantly without freezing or lagging during peak festival rushes.</p>
               </div>
               <div className="border-b border-foreground/10 pb-6">
                 <h3 className="font-bold text-xl mb-2">Does it support barcode scanners and thermal printers?</h3>
-                <p className="opacity-70">[COPY: ...]</p>
+                <p className="opacity-70">Yes! Our software is completely plug-and-play with all standard retail hardware. It integrates seamlessly with handheld barcode scanners, receipt thermal printers, cash drawers, and digital weighing scales.</p>
               </div>
             </div>
           </div>

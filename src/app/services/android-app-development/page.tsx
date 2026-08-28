@@ -35,9 +35,9 @@ export default function AndroidAppDevelopmentPage() {
         name="How we build your Android App"
         description="Our step-by-step Android app development process"
         steps={[
-          { name: "UI/UX & Prototyping", text: "[COPY: ...]" },
-          { name: "App Development", text: "[COPY: ...]" },
-          { name: "Testing & Play Store Launch", text: "[COPY: ...]" }
+          { name: "UI/UX & Prototyping", text: "We wireframe the app flow to ensure it solves the exact business problem you have before coding begins." },
+          { name: "App Development", text: "We write clean, efficient Android code using Kotlin or cross-platform frameworks for speed and reliability." },
+          { name: "Testing & Play Store Launch", text: "Rigorous QA testing across multiple devices, followed by full deployment to the Google Play Store." }
         ]}
       />
 
@@ -45,7 +45,7 @@ export default function AndroidAppDevelopmentPage() {
         variant="dark"
         eyebrow="APP DEVELOPMENT"
         title="Android App Development Company in Alwar"
-        subtitle="[COPY: ...]"
+        subtitle="Custom Android applications built for Rajasthan's businesses. From internal team management tools to customer-facing e-commerce apps, we build scalable systems."
       />
 
       <Section variant="dark" className="py-24">
@@ -54,23 +54,23 @@ export default function AndroidAppDevelopmentPage() {
           <div className="flex flex-col gap-6">
             <h2 className="text-3xl font-heading font-bold uppercase">The App Market Challenge</h2>
             <p className="opacity-70 leading-relaxed text-lg">
-              [COPY: ...]
+              Most businesses commission mobile apps that nobody ends up downloading or using. Why? Because the app doesn't solve a real problem. Whether it's an app for your sales team in the field, a delivery management system, or a direct-to-customer retail app, it needs to be fast, crash-free, and dead simple to use. Off-the-shelf white-label apps often fail because they force your business to adapt to their software, rather than the software adapting to your business.
             </p>
           </div>
 
           <div className="flex flex-col gap-6">
             <h2 className="text-3xl font-heading font-bold uppercase">Our Approach</h2>
             <p className="opacity-70 leading-relaxed text-lg">
-              [COPY: ...]
+              We engineer bespoke Android apps tailored to your specific operational workflows. If your delivery fleet needs a way to log drop-offs offline, we build it. If your clinic needs an app for patients to check live queue times, we build it. We focus on lightweight architectures, secure API integrations, and intuitive interfaces that require zero employee training to adopt.
             </p>
           </div>
 
           <div className="flex flex-col gap-6">
             <h2 className="text-3xl font-heading font-bold uppercase">How We Work</h2>
             <ol className="list-decimal list-inside opacity-70 leading-relaxed text-lg">
-              <li>[COPY: ...]</li>
-              <li>[COPY: ...]</li>
-              <li>[COPY: ...]</li>
+              <li><strong>Architecture Mapping:</strong> We define the database structure, API requirements, and exactly how the app will interact with your existing business data.</li>
+              <li><strong>Native / Hybrid Development:</strong> Depending on your budget and scale, we choose the right tech stack (Native Kotlin or React Native) and build the application in focused sprints.</li>
+              <li><strong>QA & Deployment:</strong> We rigorously test the app on low-end and high-end Android devices. Once approved, we handle all the Google Play Store compliance and submission processes.</li>
             </ol>
           </div>
 
@@ -79,11 +79,11 @@ export default function AndroidAppDevelopmentPage() {
             <div className="flex flex-col gap-6">
               <div className="border-b border-foreground/10 pb-6">
                 <h3 className="font-bold text-xl mb-2">Do you also build for iOS?</h3>
-                <p className="opacity-70">[COPY: ...]</p>
+                <p className="opacity-70">Yes. If your business requires both an Android and an iOS application, we utilize cross-platform frameworks like React Native to build for both platforms simultaneously, saving you significant time and development costs.</p>
               </div>
               <div className="border-b border-foreground/10 pb-6">
                 <h3 className="font-bold text-xl mb-2">Will you help publish the app to the Google Play Store?</h3>
-                <p className="opacity-70">[COPY: ...]</p>
+                <p className="opacity-70">Absolutely. We manage the entire lifecycle. From generating the signed APK/AAB files to writing the app store descriptions, designing screenshots, and passing Google's strict review process, we handle it all.</p>
               </div>
             </div>
           </div>

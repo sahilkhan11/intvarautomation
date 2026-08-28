@@ -2,6 +2,7 @@ import PageHero from "@/components/PageHero";
 import Section from "@/components/Section";
 import Counter from "@/components/Counter";
 import TextReveal from "@/components/TextReveal";
+import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -25,14 +26,23 @@ export default function AboutPage() {
         <div className="flex flex-col gap-16 max-w-5xl mx-auto">
           
           {/* Who We Are */}
-          <div className="flex flex-col gap-6">
-            <h2 className="text-sm font-medium uppercase tracking-widest opacity-60">Who We Are</h2>
-            <TextReveal 
-              as="p"
-              text="Intvar Automation is a tight-knit team of 5-6 people based in Alwar, Rajasthan. We started this studio to help local clinics, shops, and traders escape the spreadsheet chaos and missed-call logs. We don't sell bloated software or vanity metrics—we build tailored, real AI workflows that automatically manage your back-office so you can focus entirely on running your business."
-              splitBy="lines"
-              className="text-2xl md:text-4xl font-medium leading-snug tracking-tight"
-            />
+          <div className="flex flex-col gap-8 items-start">
+            <div className="flex flex-col gap-6">
+              <h2 className="text-sm font-medium uppercase tracking-widest opacity-60">Who We Are</h2>
+              <TextReveal 
+                as="p"
+                text="Intvar Automation is a tight-knit team of 5-6 people based in Alwar, Rajasthan. We started this studio to help local clinics, shops, and traders escape the spreadsheet chaos and missed-call logs. We don't sell bloated software or vanity metrics—we build tailored, real AI workflows that automatically manage your back-office so you can focus entirely on running your business."
+                splitBy="lines"
+                className="text-2xl md:text-4xl font-medium leading-snug tracking-tight"
+              />
+            </div>
+            <Link 
+              href="/team" 
+              className="group flex items-center justify-center gap-4 w-fit px-8 py-4 rounded-full border border-foreground/20 hover:bg-foreground hover:text-background transition-colors duration-300"
+            >
+              <span className="uppercase tracking-widest text-sm font-bold">Meet the Team</span>
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </Link>
           </div>
 
           {/* How We Work Mini-Grid */}

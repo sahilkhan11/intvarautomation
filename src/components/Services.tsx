@@ -8,14 +8,12 @@ import TextReveal from "./TextReveal";
 import Link from "next/link";
 import { servicePillars } from "../content/services";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 export default function Services() {
+  const containerRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<(HTMLAnchorElement | null)[]>([]);
 
   useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
     cardsRef.current.forEach((card) => {
       if (card) {
         gsap.fromTo(card, 
@@ -34,10 +32,10 @@ export default function Services() {
         );
       }
     });
-  }, { scope: cardsRef });
+  }, { dependencies: [], scope: containerRef });
 
   return (
-    <section className="relative bg-background text-foreground py-32 md:py-48 px-4 md:px-8 lg:px-12 overflow-hidden">
+    <section ref={containerRef} className="relative bg-background text-foreground py-32 md:py-48 px-4 md:px-8 lg:px-12 overflow-hidden">
       {/* Smoky / Foggy Animated Background Blob */}
       <div className="absolute top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-white/[0.03] rounded-full blur-[100px] animate-pulse pointer-events-none" />
       

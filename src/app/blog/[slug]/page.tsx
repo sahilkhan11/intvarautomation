@@ -58,7 +58,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     description: meta.excerpt,
     datePublished: meta.date,
     authorName: "Sahil / Intvar Automation",
-    image: "/images/blog-placeholder.jpg"
+    image: "/images/concept 1.png"
   });
 
   return (

@@ -35,7 +35,7 @@ export default function RestaurantsIndustryPage() {
         variant="dark"
         eyebrow="FOOD & BEVERAGE"
         title="Restaurant POS Software Alwar"
-        subtitle="[COPY: ...]"
+        subtitle="Stop losing money to missed orders and ingredient waste. We build all-in-one Restaurant POS and food delivery software that manages your billing, kitchen, and inventory from a single screen."
       />
 
       <Section variant="dark" className="py-24">
@@ -44,14 +44,14 @@ export default function RestaurantsIndustryPage() {
           <div className="flex flex-col gap-6">
             <h2 className="text-3xl font-heading font-bold uppercase">The Friction of Manual KOTs & Billing</h2>
             <p className="opacity-70 leading-relaxed text-lg">
-              [COPY: ...]
+              Running a successful restaurant in Alwar is chaotic enough without worrying about lost paper tickets or delayed orders. Manual Kitchen Order Tickets (KOTs) slow down your service and lead to inevitable miscommunications between your waitstaff and the kitchen. When bills are calculated manually or on outdated systems during the weekend rush, mistakes happen, tables turn over slower, and customers leave frustrated. And without strict raw material tracking, silent pilferage and food waste can quietly eat away at your profit margins.
             </p>
           </div>
 
           <div className="flex flex-col gap-6">
             <h2 className="text-3xl font-heading font-bold uppercase">Our Smart POS System</h2>
             <p className="opacity-70 leading-relaxed text-lg">
-              [COPY: ...]
+              Our smart Restaurant POS system brings absolute clarity to your operations. As soon as an order is punched in, digital KOTs are instantly fired to the kitchen displays—eliminating shouting matches and lost tickets. The software seamlessly handles table management, split bills, and integrations with food delivery apps (like Zomato and Swiggy) right from a single dashboard. Meanwhile, the backend continuously tracks recipe-level inventory, so you know exactly how much cheese, flour, and oil is being consumed versus what's actually sitting in your storeroom.
             </p>
           </div>
 
@@ -60,11 +60,11 @@ export default function RestaurantsIndustryPage() {
             <div className="flex flex-col gap-6">
               <div className="border-b border-foreground/10 pb-6">
                 <h3 className="font-bold text-xl mb-2">Can it handle multiple outlets?</h3>
-                <p className="opacity-70">[COPY: ...]</p>
+                <p className="opacity-70">Yes. Our cloud-based architecture allows you to manage multiple branches, cafes, or cloud kitchens from a centralized master dashboard. You can track live sales, update menus, and compare outlet performance on your smartphone while sitting anywhere in the world.</p>
               </div>
               <div className="border-b border-foreground/10 pb-6">
                 <h3 className="font-bold text-xl mb-2">Does it track raw material inventory?</h3>
-                <p className="opacity-70">[COPY: ...]</p>
+                <p className="opacity-70">Absolutely. We implement recipe-level (BOM) inventory management. If you sell a pizza, the software automatically deducts the exact grams of cheese, dough, and toppings from your stock. This prevents theft, reduces wastage, and triggers alerts when raw materials run low.</p>
               </div>
             </div>
           </div>

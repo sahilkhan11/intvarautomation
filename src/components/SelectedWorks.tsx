@@ -9,33 +9,37 @@ import Link from "next/link";
 import Image from "next/image";
 import { projects } from "../content/work";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 export default function SelectedWorks() {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollWrapperRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
     if (!containerRef.current || !scrollWrapperRef.current || !cardsRef.current) return;
 
-    // 1. Initial scale/opacity reveal as they scroll into view
+    // 1. Initial scale/opacity reveal as they scroll into view (coming from left and right)
     const cards = Array.from(cardsRef.current!.children);
-    const revealTween = gsap.from(cards, {
-      y: 50,
-      scale: 0.95,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 75%",
-        toggleActions: "play none none reverse"
+    const revealTween = gsap.fromTo(cards, 
+      {
+        x: (index) => (index % 2 === 0 ? -150 : 150),
+        scale: 0.95,
+        opacity: 0,
+      },
+      {
+        x: 0,
+        scale: 1,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 75%",
+          toggleActions: "play none none reverse"
+        }
       }
-    });
+    );
 
     // 2. Horizontal pinning scroll effect
     const getScrollAmount = () => {
@@ -60,7 +64,7 @@ export default function SelectedWorks() {
       revealTween.kill();
       tween.kill();
     };
-  }, { scope: containerRef });
+  }, { dependencies: [], scope: containerRef });
 
   return (
     <section ref={containerRef} className="bg-[#f4f4f4] text-[#0a0a0a] pt-24 pb-24">
@@ -98,7 +102,7 @@ export default function SelectedWorks() {
                   <h3 className="text-2xl md:text-4xl font-heading font-bold uppercase tracking-tight mb-2">{project.title}</h3>
                   <p className="text-xs md:text-sm opacity-60 uppercase tracking-widest">{project.oneLiner}</p>
                 </div>
-                <button className="w-12 h-12 shrink-0 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors">
+                <button aria-label="View project details" className="w-12 h-12 shrink-0 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>

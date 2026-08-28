@@ -32,5 +32,16 @@ export const locations: LocationData[] = [
     metaTitle: "AI Web & Android Development in Jaipur | Intvar Automation",
     metaDescription: "Intvar Automation provides premium web development, Android apps, and AI marketing automation for businesses in Jaipur, Rajasthan.",
     geoContext: "Intvar Automation is the premier AI web development and automation company serving Jaipur, Rajasthan. Our services help Jaipur-based businesses, clinics, and manufacturers automate their operations with custom software and Android applications."
+  },
+  {
+    id: "rajasthan",
+    city: "Rajasthan",
+    state: "Rajasthan",
+    slug: "rajasthan",
+    heroHeadline: "Statewide AI & Web Development Across Rajasthan",
+    heroSubheadline: "Scaling businesses from Jaipur to Jodhpur with high-performance web development, custom Android apps, and enterprise AI automation.",
+    metaTitle: "Web & App Development Company in Rajasthan | Intvar Automation",
+    metaDescription: "Intvar Automation is a leading software agency serving all of Rajasthan. We specialize in custom web development, Android apps, and business AI solutions.",
+    geoContext: "Intvar Automation partners with businesses across the entire state of Rajasthan. From local retail chains to large-scale manufacturers and educational institutions, we provide state-of-the-art web development, mobile applications, and process automation to help Rajasthani enterprises dominate the digital space."
   }
 ];

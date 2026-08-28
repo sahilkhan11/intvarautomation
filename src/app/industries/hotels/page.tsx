@@ -35,7 +35,7 @@ export default function HotelsIndustryPage() {
         variant="dark"
         eyebrow="HOSPITALITY & HOTELS"
         title="Hotel Management Software Alwar"
-        subtitle="[COPY: ...]"
+        subtitle="Prevent double bookings and streamline your front desk operations. We build custom Hotel Management and Booking Software for hotels and resorts in Alwar, unifying your reservations, housekeeping, and billing into one clean dashboard."
       />
 
       <Section variant="dark" className="py-24">
@@ -44,14 +44,14 @@ export default function HotelsIndustryPage() {
           <div className="flex flex-col gap-6">
             <h2 className="text-3xl font-heading font-bold uppercase">The Risk of Double Bookings</h2>
             <p className="opacity-70 leading-relaxed text-lg">
-              [COPY: ...]
+              Managing a hotel in Alwar using a mix of physical ledgers, scattered Excel sheets, and separate online portals is exhausting for your staff and risky for your business. When an online booking comes in but your front desk hasn't updated the master ledger, you risk the nightmare scenario of double-booking a room. Furthermore, manually calculating checkout bills, tracking room service, and coordinating with housekeeping delays checkouts and ruins the guest experience just as they are leaving.
             </p>
           </div>
 
           <div className="flex flex-col gap-6">
             <h2 className="text-3xl font-heading font-bold uppercase">Our Hotel Management Solution</h2>
             <p className="opacity-70 leading-relaxed text-lg">
-              [COPY: ...]
+              Our Hotel Management Software serves as the central nervous system for your property. The moment a guest books a room—whether through your website, a phone call, or a travel portal—your digital inventory is instantly updated across the board. The system automatically handles check-ins, tracks restaurant KOTs directly to the room bill, and alerts housekeeping the second a guest checks out. We remove the administrative chaos so you can focus entirely on delivering exceptional hospitality.
             </p>
           </div>
 
@@ -60,11 +60,11 @@ export default function HotelsIndustryPage() {
             <div className="flex flex-col gap-6">
               <div className="border-b border-foreground/10 pb-6">
                 <h3 className="font-bold text-xl mb-2">Can it sync with MakeMyTrip and Agoda?</h3>
-                <p className="opacity-70">[COPY: ...]</p>
+                <p className="opacity-70">Yes. We can integrate a Channel Manager that automatically synchronizes your room availability across major OTAs like MakeMyTrip, Agoda, Goibibo, and Booking.com in real-time, completely eliminating the risk of double bookings.</p>
               </div>
               <div className="border-b border-foreground/10 pb-6">
                 <h3 className="font-bold text-xl mb-2">Does it handle restaurant billing within the hotel?</h3>
-                <p className="opacity-70">[COPY: ...]</p>
+                <p className="opacity-70">Absolutely. The software includes a fully integrated Point of Sale (POS) system for your in-house restaurant, cafe, or bar. Any food or beverage ordered by a guest can be instantly routed to their master room bill for a seamless, single-payment checkout.</p>
               </div>
             </div>
           </div>

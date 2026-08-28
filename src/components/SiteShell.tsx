@@ -4,6 +4,9 @@ import { useEffect, useRef, useState, createContext, useContext } from "react";
 import Lenis from "lenis";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export const SoundContext = createContext({
   soundEnabled: false,
@@ -43,14 +46,11 @@ export default function SiteShell({
 
     gsap.registerPlugin(ScrollTrigger);
 
-    // Optional: Respect prefers-reduced-motion for lenis/gsap if needed, 
-    // but MotionConfig handles framer-motion which is heavily used.
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Force animations and smooth scrolling regardless of OS preference
 
     const lenis = new Lenis({
-      // We can disable smooth scroll if reduced motion is preferred
-      duration: prefersReducedMotion ? 0 : 1.2,
-      smoothWheel: !prefersReducedMotion,
+      duration: 1.2,
+      smoothWheel: true,
       syncTouch: true,
       touchMultiplier: 2,
     });

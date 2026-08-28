@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-inter)", "sans-serif"],
-        heading: ["'General Sans'", "sans-serif"],
+        heading: ["var(--font-general-sans)", "sans-serif"],
       },
       colors: {
         background: "var(--background)",

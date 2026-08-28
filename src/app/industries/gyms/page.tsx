@@ -35,7 +35,7 @@ export default function GymsIndustryPage() {
         variant="dark"
         eyebrow="FITNESS & GYMS"
         title="Gym Management Software Alwar"
-        subtitle="[COPY: ...]"
+        subtitle="Stop chasing members for pending payments. We build automated Gym Management Software for fitness centers in Alwar to effortlessly track memberships, manage trainers, and automate WhatsApp payment reminders."
       />
 
       <Section variant="dark" className="py-24">
@@ -44,14 +44,14 @@ export default function GymsIndustryPage() {
           <div className="flex flex-col gap-6">
             <h2 className="text-3xl font-heading font-bold uppercase">The Headache of Expired Memberships</h2>
             <p className="opacity-70 leading-relaxed text-lg">
-              [COPY: ...]
+              Managing a growing gym or fitness center in Alwar comes with administrative headaches that pull you away from the gym floor. Tracking exactly whose membership expires this week on a spreadsheet or a notebook is tedious and prone to human error. When members slip through the cracks, you lose revenue. Worse, manually calling or messaging people to remind them about pending payments creates an awkward relationship between your staff and your clients.
             </p>
           </div>
 
           <div className="flex flex-col gap-6">
             <h2 className="text-3xl font-heading font-bold uppercase">Our Gym Automation System</h2>
             <p className="opacity-70 leading-relaxed text-lg">
-              [COPY: ...]
+              Our Gym Management System entirely automates your front desk. The dashboard tracks every single member's profile, attendance, and subscription tier. Instead of manually checking ledgers, the software automatically triggers polite, personalized WhatsApp reminders to members 3 days before their plan expires. It also tracks personal training (PT) sessions, supplement inventory, and trainer payroll, allowing you to run a highly professional, profitable fitness center with zero administrative stress.
             </p>
           </div>
 
@@ -60,11 +60,11 @@ export default function GymsIndustryPage() {
             <div className="flex flex-col gap-6">
               <div className="border-b border-foreground/10 pb-6">
                 <h3 className="font-bold text-xl mb-2">Can it send automated renewal reminders?</h3>
-                <p className="opacity-70">[COPY: ...]</p>
+                <p className="opacity-70">Yes. The core feature of our software is WhatsApp automation. The system automatically sends payment links, renewal reminders, diet charts, and festival greetings directly to your members' WhatsApp numbers without any manual effort.</p>
               </div>
               <div className="border-b border-foreground/10 pb-6">
                 <h3 className="font-bold text-xl mb-2">Does it integrate with biometric access systems?</h3>
-                <p className="opacity-70">[COPY: ...]</p>
+                <p className="opacity-70">Absolutely. We can integrate the software with standard fingerprint or facial recognition biometric devices. When a member with an expired plan scans their finger, the turnstile stays locked and the front desk is immediately alerted.</p>
               </div>
             </div>
           </div>

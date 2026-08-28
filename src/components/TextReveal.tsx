@@ -6,12 +6,9 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 type TextRevealProps = {
-  text: string;
+  children?: React.ReactNode;
+  text?: string;
   as?: React.ElementType;
   className?: string;
   triggerOnLoad?: boolean;
@@ -20,6 +17,7 @@ type TextRevealProps = {
 };
 
 export default function TextReveal({
+  children,
   text,
   as: Component = "h2",
   className = "",
@@ -30,6 +28,7 @@ export default function TextReveal({
   const textRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
     if (!textRef.current) return;
     const currentRef = textRef.current;
 
@@ -38,6 +37,7 @@ export default function TextReveal({
       types: splitBy,
       tagName: 'span'
     });
+    
     const elements = 
       splitBy === "words" ? splitText.words : 
       splitBy === "lines" ? splitText.lines : 
@@ -45,28 +45,38 @@ export default function TextReveal({
     
     if (!elements || elements.length === 0) return;
 
-    // Set initial state
-    gsap.set(elements, {
-      yPercent: 100,
-      opacity: 0,
-    });
-
-    // Create the animation
-    gsap.to(elements, {
-      yPercent: 0,
-      opacity: 1,
-      duration: 1.2,
-      stagger: 0.08,
-      ease: "power4.out",
-      delay: triggerOnLoad ? delay : 0,
-      scrollTrigger: triggerOnLoad
-        ? undefined
-        : {
-            trigger: currentRef,
-            start: "top 85%", // trigger when element top hits 85% of viewport
-            toggleActions: "play none none none",
-          },
-    });
+    // Ensure elements have a display property that allows transform
+    gsap.set(elements, { display: 'inline-block' });
+    
+    // For words/chars, to clip properly, we might need overflow hidden on their lines.
+    // If lines, we want overflow hidden on the line itself? 
+    // Actually, just fromTo is often enough for opacity/transform.
+    
+    // Create the animation using fromTo to avoid React strict mode issues with initial state
+    gsap.fromTo(elements, 
+      {
+        yPercent: 120,
+        opacity: 0,
+        rotateX: 45,
+        transformOrigin: "0% 50% -50",
+      },
+      {
+        yPercent: 0,
+        opacity: 1,
+        rotateX: 0,
+        duration: 1.2,
+        stagger: 0.04,
+        ease: "expo.out",
+        delay: triggerOnLoad ? delay : 0,
+        scrollTrigger: triggerOnLoad
+          ? undefined
+          : {
+              trigger: currentRef,
+              start: "top 90%", // trigger when element top hits 90% of viewport
+              toggleActions: "play none none none",
+            },
+      }
+    );
 
     return () => {
       if (splitText) {
@@ -77,7 +87,7 @@ export default function TextReveal({
 
   return (
     <Component ref={textRef} className={className}>
-      {text}
+      {text || children}
     </Component>
   );
 }

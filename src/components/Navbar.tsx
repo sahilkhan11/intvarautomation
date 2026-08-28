@@ -1,50 +1,66 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import MenuOverlay from "./MenuOverlay";
 import { useSound, usePopup } from "./SiteShell";
 import { usePathname } from "next/navigation";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isLight, setIsLight] = useState(false);
   const { soundEnabled, toggleSound } = useSound();
   const { openPopup } = usePopup();
   const pathname = usePathname();
+  const navRef = useRef<HTMLDivElement>(null);
   
-  // Detect if the current page has a light hero section
-  const isLightPage = pathname === "/work" || pathname === "/blog";
+  useGSAP(() => {
+    // Re-check light sections whenever route changes or component mounts
+    const sections = gsap.utils.toArray<HTMLElement>("section[data-theme='light']");
+    
+    const triggers = sections.map((section) => {
+      return ScrollTrigger.create({
+        trigger: section,
+        start: "top 5%", 
+        end: "bottom 5%",
+        onEnter: () => setIsLight(true),
+        onLeave: () => setIsLight(false),
+        onEnterBack: () => setIsLight(true),
+        onLeaveBack: () => setIsLight(false),
+      });
+    });
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+    // Cleanup triggers on unmount
+    return () => {
+      triggers.forEach(t => t.kill());
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, { dependencies: [pathname] });
+
+  const textColor = isLight ? "text-black" : "text-white";
+  const btnBg = isLight ? "bg-black" : "bg-white";
+  const btnText = isLight ? "text-white" : "text-black";
+  const borderColor = isLight ? "border-black/40" : "border-white/40";
+  const underlineBg = isLight ? "bg-black" : "bg-white";
 
   return (
     <>
       <nav 
-        className={`fixed top-0 left-0 w-full z-50 px-4 md:px-8 lg:px-12 flex items-center justify-between transition-all duration-500 ${
-          isMenuOpen ? "text-background" : (isLightPage && !scrolled ? "text-[#0a0a0a]" : "text-foreground")
-        } ${
-          scrolled && !isMenuOpen ? "py-4 backdrop-blur-md bg-background/90 shadow-sm" : "py-6 bg-transparent"
-        }`}
+        ref={navRef}
+        className={`fixed top-0 left-0 w-full z-50 px-4 md:px-8 lg:px-12 flex items-center justify-between transition-colors duration-500 py-6 pointer-events-none ${textColor}`}
       >
       {/* Left: Logo */}
-      <Link href="/" className="flex items-center gap-2 relative z-50 group">
-        <div className={`w-6 h-6 rounded-full transition-colors duration-500 ${
-          isMenuOpen ? "bg-background" : (isLightPage && !scrolled ? "bg-[#0a0a0a]" : "bg-foreground")
-        }`} /> {/* Placeholder for Icon */}
+      <Link href="/" className="flex items-center gap-2 relative z-50 group pointer-events-auto">
+        <div className={`w-6 h-6 rounded-full transition-colors duration-500 ${btnBg}`} /> {/* Placeholder for Icon */}
         <span className="font-heading text-xl uppercase tracking-tight font-bold group-hover:opacity-70 transition-opacity">
           Intvar
         </span>
       </Link>
 
       {/* Right: Navigation & Actions */}
-      <div className="flex items-center gap-6 md:gap-8">
+      <div className="flex items-center gap-6 md:gap-8 pointer-events-auto">
         {/* Nav Links (Desktop) */}
         <div className="hidden lg:flex items-center gap-8 text-sm font-medium">
           {["Work", "Services", "About", "Demos", "Contact", "Blog"].map((item) => (
@@ -55,7 +71,7 @@ export default function Navbar() {
             >
               <span>{item}</span>
               {/* Underline hover effect: grows left->right */}
-              <span className="absolute bottom-0 left-0 w-full h-[1px] bg-current origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
+              <span className={`absolute bottom-0 left-0 w-full h-[1px] ${underlineBg} origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out`} />
             </Link>
           ))}
         </div>
@@ -64,12 +80,9 @@ export default function Navbar() {
         <div className="flex items-center gap-4 text-sm font-medium relative z-50">
           {/* Sound Toggle */}
           <button 
+            aria-label="Toggle Sound"
             onClick={toggleSound}
-            className={`hidden md:flex items-center justify-center w-10 h-10 rounded-full border hover:scale-105 transition-all duration-500 ${
-              isMenuOpen 
-                ? "border-background/20 text-background" 
-                : (isLightPage && !scrolled ? "border-[#0a0a0a]/20 text-[#0a0a0a]" : "border-foreground/20 text-foreground")
-            } ${soundEnabled ? "opacity-100" : "opacity-50"}`}
+            className={`hidden md:flex items-center justify-center w-10 h-10 rounded-full border hover:scale-105 transition-all duration-500 ${borderColor} ${textColor} ${soundEnabled ? "opacity-100" : "opacity-50"}`}
           >
             {soundEnabled ? (
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -89,22 +102,15 @@ export default function Navbar() {
           {/* Let's Talk Button */}
           <button 
             onClick={openPopup}
-            className={`hidden sm:block rounded-full px-6 py-2.5 hover:scale-105 transition-all duration-500 ${
-            isMenuOpen 
-              ? "bg-background text-foreground" 
-              : (isLightPage && !scrolled ? "bg-[#0a0a0a] text-[#f4f4f4]" : "bg-foreground text-background")
-          }`}>
+            className={`hidden sm:block rounded-full px-6 py-2.5 hover:scale-105 transition-all duration-500 ${btnBg} ${btnText} font-bold`}
+          >
             Let&apos;s Talk
           </button>
 
           {/* Menu Toggle */}
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`rounded-full px-6 py-2.5 hover:scale-105 transition-all duration-500 ${
-              isMenuOpen 
-                ? "bg-background text-foreground" 
-                : (isLightPage && !scrolled ? "bg-[#0a0a0a] text-[#f4f4f4]" : "bg-foreground text-background")
-            }`}
+            className={`rounded-full px-6 py-2.5 hover:scale-105 transition-all duration-500 ${btnBg} ${btnText} font-bold`}
           >
             {isMenuOpen ? "Close" : "Menu"}
           </button>

@@ -1,19 +1,15 @@
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import TextReveal from "./TextReveal";
 import HeroMarquee from "./HeroMarquee";
 
-const DynamicHeroCanvas = dynamic(() => import("./HeroCanvas"), {
-  ssr: false,
-  loading: () => <div className="w-full h-full bg-background/50 animate-pulse" />
-});
+import HeroCanvasWrapper from "./HeroCanvasWrapper";
 
-export default function Hero() {
+export default function Hero({ children }: { children?: React.ReactNode }) {
   return (
     <section className="relative w-full h-screen bg-background flex flex-col justify-center overflow-hidden px-4 md:px-8 lg:px-12 pt-24 pb-8">
       {/* 3D Canvas Background */}
       <div className="absolute inset-0 z-0">
-        <DynamicHeroCanvas />
+        <HeroCanvasWrapper />
       </div>
 
       {/* Foreground Content Wrapper */}
@@ -21,7 +17,7 @@ export default function Hero() {
         
         {/* Top Row */}
         <div className="flex justify-between items-start pt-8 pointer-events-auto">
-          <div className="flex flex-col text-xs md:text-sm uppercase tracking-widest opacity-60 font-medium gap-1">
+          <div className="flex flex-col text-xs md:text-sm uppercase tracking-widest opacity-70 font-medium gap-1">
             <span>AI MARKETING & MANAGEMENT</span>
             <span>SOFTWARE</span>
           </div>
@@ -37,13 +33,14 @@ export default function Hero() {
         {/* Center Row */}
         <div className="flex flex-col w-full mt-auto mb-auto justify-center pt-12 pointer-events-auto">
           <TextReveal 
-            as="h1"
-            text="One system to find, follow up, and keep every customer."
+            as="div"
             splitBy="words"
             triggerOnLoad={true}
             delay={0.2}
             className="text-[8vw] md:text-[5vw] font-bold font-heading uppercase leading-[0.85] tracking-tighter"
-          />
+          >
+            {children || <h1 className="sr-only">One system to find, follow up, and keep every customer.</h1>}
+          </TextReveal>
           
           {/* Horizontal Rule */}
           <div className="w-full h-[1px] bg-foreground/20 my-6 md:my-8" />
@@ -54,12 +51,12 @@ export default function Hero() {
 
         {/* Bottom Row */}
         <div className="flex justify-between items-end pb-4 pointer-events-auto">
-          <div className="flex flex-col text-xs md:text-sm uppercase tracking-widest opacity-60 gap-1 hidden sm:flex">
+          <div className="flex flex-col text-xs md:text-sm uppercase tracking-widest opacity-70 gap-1 hidden sm:flex">
             <span>Based in Rajasthan, India</span>
             <span>Working Global</span>
           </div>
           
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-4 md:bottom-8 flex flex-col items-center gap-2 opacity-50 hidden sm:flex">
+          <div className="absolute left-1/2 -translate-x-1/2 bottom-4 md:bottom-8 flex flex-col items-center gap-2 opacity-70 hidden sm:flex">
             <span className="text-[10px] uppercase tracking-widest">Scroll</span>
             <div className="w-[1px] h-12 bg-foreground/20 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1/2 bg-foreground animate-bounce" />

@@ -23,8 +23,8 @@ export default function Footer() {
       {/* CTA Section */}
       <div className="px-4 md:px-8 lg:px-12 max-w-7xl mx-auto w-full flex flex-col gap-12 relative z-10 pt-16">
         <div className="flex justify-between items-start">
-          <span className="text-sm font-medium uppercase tracking-widest opacity-60 max-w-[200px]">Let&apos;s set up your system</span>
-          <div className="flex flex-col items-end gap-1 text-sm font-medium opacity-60 uppercase tracking-widest">
+          <span className="text-sm font-medium uppercase tracking-widest opacity-70 max-w-[200px]">Let&apos;s set up your system</span>
+          <div className="flex flex-col items-end gap-1 text-sm font-medium opacity-70 uppercase tracking-widest">
             <span>Local Time</span>
             <span>{time}</span>
           </div>
@@ -50,7 +50,7 @@ export default function Footer() {
 
       <div className="flex flex-col w-full mt-auto relative z-10">
         {/* Footer Details */}
-        <div className="mt-24 border-t border-white/10 px-4 md:px-8 lg:px-12 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-sm uppercase tracking-widest opacity-60">
+        <div className="mt-24 border-t border-white/10 px-4 md:px-8 lg:px-12 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-sm uppercase tracking-widest opacity-70">
           <div className="flex flex-col gap-2">
             <span>© {new Date().getFullYear()} Intvar Automation</span>
             <span>Alwar, Rajasthan — +91 7372908326</span>
@@ -72,13 +72,14 @@ export default function Footer() {
         {/* Equalizer Bars - simple hover reactive bars */}
         <div className="flex w-full h-24 items-end gap-[1px] opacity-20 pointer-events-auto group">
            {[...Array(60)].map((_, i) => {
-             // Create a random starting height between 20% and 80%
-             const height = 10 + Math.random() * 50;
+             // Deterministic pseudo-random based on index to prevent hydration errors
+             const pseudoRandom = Math.abs(Math.sin(i * 13.54)) % 1;
+             const scale = 0.2 + pseudoRandom * 0.6;
              return (
                <div 
                  key={i} 
-                 className="flex-1 bg-white transition-all duration-300 ease-out hover:h-full hover:bg-white"
-                 style={{ height: `${height}%` }}
+                 className="flex-1 h-full bg-white transition-transform duration-300 ease-out origin-bottom hover:scale-y-100 hover:bg-white"
+                 style={{ transform: `scaleY(${scale})` }}
                />
              );
            })}

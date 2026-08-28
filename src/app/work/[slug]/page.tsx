@@ -109,22 +109,22 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             <div className="md:col-span-2 flex flex-col gap-16">
               <div className="flex flex-col gap-4">
                 <h2 className="text-3xl font-heading font-bold uppercase tracking-tight">The Problem</h2>
-                <p className="text-lg opacity-70 leading-relaxed font-medium">
-                  {project.oneLiner} Currently, this is a placeholder block. Detailed problem statement highlighting the exact bottlenecks, manual inefficiencies, or revenue gaps the client was facing before implementing Intvar&apos;s AI solutions.
+                <p className="text-lg opacity-70 leading-relaxed font-medium whitespace-pre-line">
+                  {project.problem || project.oneLiner}
                 </p>
               </div>
 
               <div className="flex flex-col gap-4">
                 <h2 className="text-3xl font-heading font-bold uppercase tracking-tight">Our Approach</h2>
-                <p className="text-lg opacity-70 leading-relaxed font-medium">
-                  Detailed breakdown of the strategy, tools, and automation workflows deployed to solve the problem. Explains the step-by-step implementation of AI agents, system integrations, and custom logic.
+                <p className="text-lg opacity-70 leading-relaxed font-medium whitespace-pre-line">
+                  {project.approach || "Detailed breakdown of the strategy, tools, and automation workflows deployed to solve the problem. Explains the step-by-step implementation of AI agents, system integrations, and custom logic."}
                 </p>
               </div>
 
               <div className="flex flex-col gap-4">
                 <h2 className="text-3xl font-heading font-bold uppercase tracking-tight">The Result</h2>
-                <p className="text-lg opacity-70 leading-relaxed font-medium">
-                  Measurable impact metrics showing the success of the project. Details on hours saved, revenue increased, leads captured, and overall business transformation.
+                <p className="text-lg opacity-70 leading-relaxed font-medium whitespace-pre-line">
+                  {project.result || "Measurable impact metrics showing the success of the project. Details on hours saved, revenue increased, leads captured, and overall business transformation."}
                 </p>
               </div>
             </div>

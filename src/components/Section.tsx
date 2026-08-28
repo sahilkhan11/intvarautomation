@@ -17,7 +17,7 @@ const Section = forwardRef<HTMLElement, SectionProps>(({
     : "bg-[#f4f4f4] text-[#0a0a0a]";
 
   return (
-    <section ref={ref} className={`${baseClasses} ${variantClasses} ${className}`}>
+    <section ref={ref} data-theme={variant} className={`${baseClasses} ${variantClasses} ${className}`}>
       <div className="mx-auto max-w-7xl">
         {children}
       </div>

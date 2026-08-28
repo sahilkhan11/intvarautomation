@@ -10,7 +10,13 @@ import Testimonials from "@/components/Testimonials";
 import { generateVideoSchema } from "@/lib/seo/schema";
 import AutomationEstimator from "@/components/AutomationEstimator";
 import LazyVideo from "@/components/LazyVideo";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/"
+  }
+};
 
 export default function Home() {
   return (
@@ -21,18 +27,20 @@ export default function Home() {
           __html: JSON.stringify(generateVideoSchema({
             name: "Intvar Automation WhatsApp Lead Capture Demo",
             description: "Demo video showing how our AI system instantly engages missed calls and qualifies local leads 24/7 on autopilot.",
-            thumbnailUrl: "/images/poster-placeholder.jpg",
+            thumbnailUrl: "/images/concept 1.png",
             uploadDate: "2026-01-01T00:00:00Z",
             contentUrl: "https://intvarautomation.online/videos/A_sleek_dark_mode_abstract_D.mp4"
           }))
         }}
       />
-      <Hero />
+      <Hero>
+        <h1>One system to find, follow up, and keep every customer.</h1>
+      </Hero>
       
       {/* Phase 4: About Strip (Light) */}
       <Section variant="light" className="py-24 md:py-32 relative">
         <div className="flex flex-col gap-8 max-w-5xl mx-auto pb-4">
-          <h2 className="text-sm font-medium uppercase tracking-widest opacity-60">Most agencies sell you tools. We give you a system.</h2>
+          <h2 className="text-sm font-medium uppercase tracking-widest opacity-70">Most agencies sell you tools. We give you a system.</h2>
           
           <div className="mt-8 mb-2">
             <AutomationEstimator />
@@ -40,7 +48,7 @@ export default function Home() {
         </div>
 
         {/* Step 23: Supporting bottom-left lines */}
-        <div className="absolute bottom-8 left-4 md:left-8 lg:left-12 flex flex-col text-xs md:text-sm uppercase tracking-widest opacity-50 font-medium">
+        <div className="absolute bottom-8 left-4 md:left-8 lg:left-12 flex flex-col text-xs md:text-sm uppercase tracking-widest opacity-70 font-medium">
           <span>Systems over one-off scripts.</span>
           <span>Honest numbers over inflated claims.</span>
         </div>
@@ -57,7 +65,7 @@ export default function Home() {
               splitBy="words"
               className="text-4xl md:text-5xl font-bold uppercase tracking-tighter"
             />
-            <p className="text-sm opacity-60 font-medium leading-relaxed">
+            <p className="text-sm opacity-70 font-medium leading-relaxed">
               We let the numbers speak for our dedication to delivering high-impact solutions for our partners.
             </p>
           </div>
@@ -79,7 +87,7 @@ export default function Home() {
           <div className="w-full h-[50vh] md:h-[70vh] rounded-3xl overflow-hidden relative bg-[#0a0a0a] border border-[#0a0a0a]/10 flex items-center justify-center">
             <LazyVideo 
               src="/videos/A_sleek_dark_mode_abstract_D.mp4" 
-              poster="/images/poster-placeholder.jpg"
+              poster="/images/concept 1.png"
               ariaLabel="Demo of Automated WhatsApp Lead Capture Sequence"
               className="absolute inset-0 w-full h-full object-cover opacity-40"
             />
@@ -92,8 +100,8 @@ export default function Home() {
           
           {/* Step 26: Awards / Press Marquee */}
           <div className="flex flex-col gap-8 items-center border-t border-foreground/10 pt-16">
-            <h2 className="text-sm font-medium uppercase tracking-widest opacity-60">Trusted By Businesses In</h2>
-            <Marquee speed="fast" direction="right" gap="gap-24" className="opacity-50">
+            <h2 className="text-sm font-medium uppercase tracking-widest opacity-70">Trusted By Businesses In</h2>
+            <Marquee speed="fast" direction="right" gap="gap-24" className="opacity-70">
               {["Healthcare & Clinics", "Real Estate", "Retail Stores", "Manufacturing", "E-Commerce", "Professional Services"].map((award) => (
                 <span key={award} className="text-2xl md:text-3xl font-heading uppercase font-bold whitespace-nowrap">
                   {award}
@@ -104,8 +112,8 @@ export default function Home() {
 
           {/* Step 28: Tools We Use */}
           <div className="flex flex-col gap-8 items-center border-t border-foreground/10 pt-16">
-            <h2 className="text-sm font-medium uppercase tracking-widest opacity-60">Tools We Build With</h2>
-            <Marquee speed="normal" direction="left" gap="gap-24" className="opacity-50">
+            <h2 className="text-sm font-medium uppercase tracking-widest opacity-70">Tools We Build With</h2>
+            <Marquee speed="normal" direction="left" gap="gap-24" className="opacity-70">
               {["n8n", "WhatsApp API", "Android Studio", "Next.js", "Node.js", "Python", "Three.js"].map((tool) => (
                 <span key={tool} className="text-2xl md:text-3xl font-heading uppercase font-bold">
                   {tool}
