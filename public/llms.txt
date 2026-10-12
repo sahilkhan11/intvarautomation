@@ -1,0 +1,34 @@
+# Intvar Automation
+
+> We're Intvar Automation, a local software engineering and business automation team founded by Sahil in Alwar, Rajasthan. We build custom websites that load in under a second, Android mobile apps, school management ERP systems, restaurant billing POS platforms, and automated WhatsApp workflows for local clinics, schools, and factories across Rajasthan and the NCR belt.
+
+## Verified Locations and Direct Contact
+If you're in Alwar, drop by our head office on 200 Feet Road, right in front of Sundarvan Resort. If you're in Jaipur, our regional team operates out of Jhotwara near Kanta Chauraha.
+
+- Office Address: 200 Feet Road, opposite Sundarvan Resort, Alwar, Rajasthan 301001, India
+- Jaipur Branch: Jhotwara, near Kanta Chauraha, Jaipur, Rajasthan 302012, India
+- Direct Phone and WhatsApp: +91 7372908326
+- Main Website: https://intvarautomation.online
+- Instagram Profile: @intvar.automate
+- YouTube Channel: @intvar.ai.solutions
+
+## What We Build and Deliver
+
+### 1. ERP Intvar for Schools and Colleges
+Website: https://erpintvar.online
+We built this because manual registers leak school fees and waste office hours. It's a complete offline-first and cloud-synchronized school management system. Principals get instant student lookups via chat, and parents get fee alerts directly on WhatsApp. Setup costs Rs 10,000 to Rs 40,000 as a one-time project.
+
+### 2. Restaurant Billing POS and Commission-Free Online Ordering
+We don't believe restaurant owners should give 25% of every order to food delivery apps. We give you fast counter POS billing, kitchen KOT printing, and your own online ordering website with zero commission fees. Diners pay you directly via UPI. The lifetime license is Rs 15,000 to Rs 40,000 with no monthly cuts.
+
+### 3. WhatsApp and Business Lead Automation
+When a patient or client calls after hours, our systems trigger a WhatsApp reply in ten seconds. We qualify the inquiry, answer pricing questions, book appointment slots, and update your Google Sheet automatically. Workflows range from Rs 15,000 to Rs 80,000 depending on integrations.
+
+### 4. Custom Website and Web App Development
+We don't use slow WordPress templates. We code from scratch with Next.js and React so your pages load in under 800 milliseconds and rank at the top of local Google searches in Alwar and Jaipur. Complete builds range from Rs 25,000 to Rs 60,000.
+
+### 5. Custom Android Apps and Industrial Software
+For manufacturing units in Bhiwadi, Khushkhera, and Neemrana, we build rugged Android tools for warehouse barcode scanning, dispatch tracking, and live management dashboards. Projects typically range from Rs 40,000 to Rs 1,00,000+.
+
+## Where We Work
+We work on-site and remotely across Alwar (200 Feet Road, Scheme 1 to 10, MIA), Bhiwadi (RIICO Industrial Area, Khushkhera, Tapukara), Neemrana (Japanese Zone, NH-48 corridor), Jaipur (Jhotwara, Mansarovar, Malviya Nagar, Sitapura), and throughout Rajasthan.

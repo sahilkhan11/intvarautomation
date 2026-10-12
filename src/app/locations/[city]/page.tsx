@@ -45,21 +45,37 @@ export default function LocationPage({ params }: Props) {
   const localSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "serviceType": "AI Web & Android Development",
+    "name": `${location.city} Website Development & Automation Services`,
+    "serviceType": "Custom Software, Website Development & Business Automation",
     "provider": {
       "@type": "LocalBusiness",
       "name": "Intvar Automation",
+      "telephone": "+917372908326",
+      "priceRange": "₹₹",
+      "image": "https://intvarautomation.online/images/concept 1.png",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "200 Feet Road, opposite Sundarvan Resort",
         "addressLocality": location.city,
-        "addressRegion": location.state,
+        "addressRegion": "Rajasthan",
+        "postalCode": "301001",
         "addressCountry": "IN"
-      }
+      },
+      "sameAs": [
+        "https://instagram.com/intvar.automate",
+        "https://youtube.com/@intvar.ai.solutions"
+      ]
     },
-    "areaServed": {
-      "@type": "City",
-      "name": location.city
-    }
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": location.city
+      },
+      {
+        "@type": "State",
+        "name": "Rajasthan"
+      }
+    ]
   };
 
   return (

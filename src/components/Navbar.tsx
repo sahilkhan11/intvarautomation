@@ -1,55 +1,67 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import MenuOverlay from "./MenuOverlay";
 import { useSound, usePopup } from "./SiteShell";
-import { usePathname } from "next/navigation";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLight, setIsLight] = useState(false);
   const { soundEnabled, toggleSound } = useSound();
   const { openPopup } = usePopup();
-  const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
   
-  useGSAP(() => {
-    // Re-check light sections whenever route changes or component mounts
-    const sections = gsap.utils.toArray<HTMLElement>("section[data-theme='light']");
-    
-    const triggers = sections.map((section) => {
-      return ScrollTrigger.create({
-        trigger: section,
-        start: "top 5%", 
-        end: "bottom 5%",
-        onEnter: () => setIsLight(true),
-        onLeave: () => setIsLight(false),
-        onEnterBack: () => setIsLight(true),
-        onLeaveBack: () => setIsLight(false),
-      });
-    });
+  const [isHidden, setIsHidden] = useState(false);
 
-    // Cleanup triggers on unmount
-    return () => {
-      triggers.forEach(t => t.kill());
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (!isMenuOpen) {
+            if (window.scrollY > lastScrollY && window.scrollY > 50) {
+              setIsHidden(true);
+            } else {
+              setIsHidden(false);
+            }
+          }
+          lastScrollY = window.scrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-  }, { dependencies: [pathname] });
 
-  const textColor = isLight ? "text-black" : "text-white";
-  const btnBg = isLight ? "bg-black" : "bg-white";
-  const btnText = isLight ? "text-white" : "text-black";
-  const borderColor = isLight ? "border-black/40" : "border-white/40";
-  const underlineBg = isLight ? "bg-black" : "bg-white";
+    const handleMouseMove = (e: MouseEvent) => {
+      if (e.clientY < 80 && !isMenuOpen) {
+        setIsHidden(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [isMenuOpen]);
+
+  // Using mix-blend-difference to automatically contrast against ANY background.
+  // We style everything as white/light on dark, and the blend mode handles inverting it on light backgrounds.
+  const textColor = "text-white";
+  const btnBg = "bg-white";
+  const btnText = "text-black";
+  const borderColor = "border-white/40";
+  const underlineBg = "bg-white";
 
   return (
     <>
       <nav 
         ref={navRef}
-        className={`fixed top-0 left-0 w-full z-50 px-4 md:px-8 lg:px-12 flex items-center justify-between transition-colors duration-500 py-6 pointer-events-none ${textColor}`}
+        className={`fixed top-0 left-0 w-full z-50 px-4 md:px-8 lg:px-12 flex items-center justify-between transition-transform duration-500 py-6 pointer-events-none mix-blend-difference ${textColor} ${isHidden ? "-translate-y-full" : "translate-y-0"}`}
       >
       {/* Left: Logo */}
       <Link href="/" className="flex items-center gap-2 relative z-50 group pointer-events-auto">
@@ -63,7 +75,7 @@ export default function Navbar() {
       <div className="flex items-center gap-6 md:gap-8 pointer-events-auto">
         {/* Nav Links (Desktop) */}
         <div className="hidden lg:flex items-center gap-8 text-sm font-medium">
-          {["Work", "Services", "About", "Demos", "Contact", "Blog"].map((item) => (
+          {["Services", "About", "Portfolio", "Contact", "Blog"].map((item) => (
             <Link
               key={item}
               href={`/${item.toLowerCase()}`}

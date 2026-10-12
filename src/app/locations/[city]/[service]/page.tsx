@@ -80,13 +80,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// Pre-render these static paths for faster loading and better SEO
 export function generateStaticParams() {
   const params: { city: string, service: string }[] = [];
   
+  // These routes already have explicit static folders with page.tsx
+  const explicitRoutes = [
+    "alwar/website-development",
+    "bhiwadi/erp-integration",
+    "jaipur/ai-automation"
+  ];
+  
   locations.forEach((loc) => {
     Object.keys(servicesData).forEach((serviceSlug) => {
-      params.push({ city: loc.slug, service: serviceSlug });
+      const routeStr = `${loc.slug}/${serviceSlug}`;
+      if (!explicitRoutes.includes(routeStr)) {
+        params.push({ city: loc.slug, service: serviceSlug });
+      }
     });
   });
 
@@ -104,16 +113,26 @@ export default function LocationServicePage({ params }: Props) {
   const localSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "name": `${service.title} in ${location.city}`,
     "serviceType": service.schemaServiceType,
     "provider": {
       "@type": "LocalBusiness",
       "name": "Intvar Automation",
+      "telephone": "+917372908326",
+      "priceRange": "₹₹",
+      "image": "https://intvarautomation.online/images/concept 1.png",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "200 Feet Road, opposite Sundarvan Resort",
         "addressLocality": location.city,
-        "addressRegion": location.state,
+        "addressRegion": "Rajasthan",
+        "postalCode": "301001",
         "addressCountry": "IN"
-      }
+      },
+      "sameAs": [
+        "https://instagram.com/intvar.automate",
+        "https://youtube.com/@intvar.ai.solutions"
+      ]
     },
     "areaServed": {
       "@type": "City",

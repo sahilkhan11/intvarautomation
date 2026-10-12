@@ -1,0 +1,147 @@
+export interface PortfolioItem {
+  id: string;
+  name: string;
+  description: string;
+  categories: string[];
+  industry: string;
+  link?: string;
+  image?: string;
+}
+
+export const PORTFOLIO: PortfolioItem[] = [
+  {
+    id: "shoptec-ecommerce",
+    name: "Shoptec.in",
+    description: "A complete multi-vendor e-commerce platform with inventory management and payment gateway integration.",
+    image: "/portfolio/shoptec.jpg",
+    categories: ["E-commerce", "Web App"],
+    industry: "Retail",
+    link: "https://shoptec.in",
+  },
+  {
+    id: "national-academy",
+    name: "National Academy",
+    description: "Educational portal with student management, online admission process, and digital notice board.",
+    image: "/portfolio/national_academy.jpg",
+    categories: ["Website", "Portal"],
+    industry: "Education",
+    link: "https://www.nationalacademyedu.com/",
+  },
+  {
+    id: "modulus-academy",
+    name: "Modulus Academy",
+    description: "Ongoing management, technical updates, and SEO strategy for the leading IIT/JEE & NEET coaching institute in Alwar.",
+    image: "/portfolio/modulus_academy.jpg",
+    categories: ["SEO", "Maintenance", "Updates"],
+    industry: "Education",
+    link: "https://www.modulusacademy.com/",
+  },
+  {
+    id: "alwar-furniture",
+    name: "AlwarFurniture.in",
+    description: "Online furniture catalog with augmented reality product preview and custom order forms.",
+    image: "/portfolio/alwar_furniture.jpg",
+    categories: ["E-commerce", "3D"],
+    industry: "Retail",
+    link: "https://alwarfurniture.in",
+  },
+  {
+    id: "lali-super",
+    name: "LaliSuper.in",
+    description: "Local grocery delivery platform with real-time inventory tracking and delivery route optimization.",
+    image: "/portfolio/lali_super.jpg",
+    categories: ["E-commerce", "Delivery"],
+    industry: "Food & Beverage",
+    link: "https://lalisuper.in",
+  },
+  {
+    id: "sania-hospital",
+    name: "Sania Hospital",
+    description: "A comprehensive hospital management website demo featuring appointment booking, doctor profiles, and department services.",
+    image: "/portfolio/sania_hospital.jpg",
+    categories: ["Website", "Healthcare", "Demo"],
+    industry: "Healthcare",
+    link: "https://sania-hospital-demo.vercel.app/",
+  },
+  {
+    id: "shoptec-partner-app",
+    name: "Shoptec Partner App",
+    description: "A robust Android application for Shoptec partners to manage their e-commerce store operations efficiently on the go.",
+    image: "/portfolio/shoptec_app.jpg",
+    categories: ["Mobile App", "E-commerce"],
+    industry: "Retail",
+    link: "https://play.google.com/store/apps/details?id=kasinfo.shoptec.shop&hl=en_IN",
+  },
+  {
+    id: "gym-levelling-app",
+    name: "Gym Levelling",
+    description: "A comprehensive fitness management app designed to help gym owners handle memberships, schedules, and operations.",
+    image: "/portfolio/gym_levelling.jpg",
+    categories: ["Mobile App", "Fitness"],
+    industry: "Health & Fitness",
+    link: "https://play.google.com/store/apps/details?id=com.intvarautomation.gymlevelling&hl=en_IN",
+  },
+  {
+    id: "sahi-jagah-app",
+    name: "Sahi Jagah",
+    description: "A comprehensive real estate and property search mobile application to help users find their ideal properties.",
+    image: "/portfolio/sahi_jagah.jpg",
+    categories: ["Mobile App", "Real Estate"],
+    industry: "Real Estate",
+    link: "https://play.google.com/store/apps/details?id=com.kasinfo.sahijagah&hl=hi",
+  },
+  {
+    id: "jashoda-hospital",
+    name: "Jashoda Hospital",
+    description: "A comprehensive healthcare website and digital presence for Jashoda Hospital.",
+    image: "/portfolio/jashoda_hospital.jpg",
+    categories: ["Website", "Healthcare"],
+    industry: "Healthcare",
+    link: "https://jashodahospital.in",
+  },
+  {
+    id: "ram-solar",
+    name: "Ram Solar",
+    description: "A platform offering solar energy solutions to help users lower their energy bills and earn higher returns.",
+    image: "/portfolio/ram_solar.jpg",
+    categories: ["Website", "Renewable Energy"],
+    industry: "Energy",
+    link: "https://ramsolar.in",
+  },
+  {
+    id: "sahi-jagah-web",
+    name: "Sahi Jagah Web",
+    description: "The primary web platform for Sahi Jagah, offering a comprehensive real estate search experience.",
+    image: "/portfolio/sahi_jagah_web.jpg",
+    categories: ["Website", "Real Estate"],
+    industry: "Real Estate",
+    link: "https://sahijagah.com",
+  },
+  {
+    id: "shiksha-hi-samadhan",
+    name: "Shiksha Hi Samadhan",
+    description: "An educational trust website focused on providing academic coaching and support to disadvantaged students.",
+    image: "/portfolio/shikshahisamadhan.jpg",
+    categories: ["Website", "NGO"],
+    industry: "Education",
+    link: "https://shikshahisamadhan.in",
+  },
+  {
+    id: "ca-mukhtyar",
+    name: "CA Mukhtyar",
+    description: "Professional website providing financial, accounting, and taxation services.",
+    image: "/portfolio/camukhtyar.jpg",
+    categories: ["Website", "Professional Services"],
+    industry: "Finance & Accounting",
+    link: "https://camukhtyar.in",
+  },
+  {
+    id: "meo-society",
+    name: "Meo Society",
+    description: "A community and cultural portal dedicated to the heritage and social initiatives of the Meo society.",
+    image: "/portfolio/meosociety.jpg",
+    categories: ["Website", "Community"],
+    industry: "Non-Profit & Community",
+    link: "https://meosociety.com",
+  }
+];

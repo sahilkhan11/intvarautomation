@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import PageHero from "@/components/PageHero";
 import Section from "@/components/Section";
-import { DEMOS } from "@/content/demos";
+import { PORTFOLIO } from "@/content/portfolio";
 
 function ContactForm() {
   const searchParams = useSearchParams();
@@ -22,7 +22,7 @@ function ContactForm() {
 
   useEffect(() => {
     if (demoParam) {
-      const foundDemo = DEMOS.find((d) => d.id === demoParam);
+      const foundDemo = PORTFOLIO.find((d) => d.id === demoParam);
       if (foundDemo) {
         setFormData((prev) => ({
           ...prev,
@@ -58,12 +58,11 @@ function ContactForm() {
     setErrorMessage("");
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ""}/api/submit.php`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: "80399a07-8f94-443c-9ea8-325fde31d962",
-          subject: "New Contact Request from Intvar Website",
+          formType: "contact",
           ...formData
         }),
       });

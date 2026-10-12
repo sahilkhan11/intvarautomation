@@ -20,183 +20,120 @@ export interface ServicePillar {
     note: string;
   };
   slug: string;
+  link?: string;
+  linkText?: string;
 }
 
 export const servicePillars: ServicePillar[] = [
   {
-    id: "ai-marketing",
+    id: "erp-intvar",
     order: 1,
-    emoji: "🚀",
-    title: "AI Marketing",
-    outcome: "Become the business AI recommends.",
+    emoji: "🏫",
+    title: "ERP Intvar for Schools",
+    outcome: "Complete school management with offline and online sync.",
     isFlagship: true,
-    description: "We help your local business show up when customers ask ChatGPT, Gemini, Claude, or Perplexity for the best in your category. By combining traditional local SEO, reputation management, and entity optimization, we ensure AI platforms understand and recommend your business.",
+    description: "Designed exclusively for schools and coaching institutes in Rajasthan. Manage student records, staff attendance, and fee tracking without manual register entries. Works offline during internet cuts and synchronizes seamlessly when back online. Principals can query student details and send pending fee alerts on WhatsApp directly.",
     capabilities: [
-      { name: "AI Visibility Optimization" },
-      { name: "AI Search Optimization (GEO)" },
-      { name: "Local SEO" },
-      { name: "Google Business Profile Optimization" },
-      { name: "Reputation Management" },
-      { name: "Review Generation" },
-      { name: "Knowledge Graph & Entity Optimization" },
-      { name: "AI-Friendly Website Optimization" },
-      { name: "Authority Content Creation" },
-      { name: "Competitor AI Visibility Analysis" }
+      { name: "Offline & Cloud Sync" },
+      { name: "WhatsApp Fee Alerts" },
+      { name: "Student & Staff Attendance" },
+      { name: "Fee Receipt Generation" },
+      { name: "Report Card Automation" },
+      { name: "Principal Voice/Chat Queries" }
     ],
-    result: "When someone asks an AI assistant for the best business in a category, your business has a stronger chance of being the one it recommends.",
+    result: "Schools eliminate uncollected fee leakage and save over 15 hours of manual office work every week.",
     pricing: {
-      label: "Complete AI Marketing Package",
-      rangeLow: 21000,
+      label: "Complete Implementation",
+      rangeLow: 10000,
       rangeHigh: 40000,
       currency: "INR",
-      note: "Scope depends on business size, number of locations, and current online presence"
+      note: "One-time cost based on student volume and modules needed"
     },
-    slug: "ai-marketing"
+    slug: "erp-intvar",
+    link: "https://erpintvar.online",
+    linkText: "Visit ERP Intvar"
+  },
+  {
+    id: "restaurant-billing",
+    order: 2,
+    emoji: "🍽️",
+    title: "Restaurant POS & Direct Online Ordering",
+    outcome: "Fast billing software plus your own commission-free ordering website.",
+    isFlagship: true,
+    description: "Equip your restaurant, cafe, or cloud kitchen with high-speed touchscreen billing and a custom branded online ordering website. Stop handing over 20% to 30% of your margins to third-party delivery aggregators. Your customers scan a QR code or order directly from your website with instant UPI payments.",
+    capabilities: [
+      { name: "Fast POS Billing & KOT" },
+      { name: "Commission-Free Ordering Website" },
+      { name: "QR Code Table Menus" },
+      { name: "Direct UPI Payments (0% Cut)" },
+      { name: "Kitchen Display System" },
+      { name: "Ingredient & Inventory Tracking" }
+    ],
+    result: "Restaurants save Rs 20,000 to Rs 60,000 every month in commissions while retaining direct customer phone numbers.",
+    pricing: {
+      label: "Lifetime POS & Website License",
+      rangeLow: 15000,
+      rangeHigh: 40000,
+      currency: "INR",
+      note: "One-time lifetime cost. No recurring monthly commission."
+    },
+    slug: "restaurant-billing",
+    link: "/contact",
+    linkText: "Request Demo"
   },
   {
     id: "ai-automation",
-    order: 2,
+    order: 3,
     emoji: "⚙️",
-    title: "AI Automation",
-    outcome: "Automate repetitive work and improve efficiency.",
-    description: "Stop wasting time on manual data entry and missed follow-ups. We build intelligent systems that save your business hours per week, speed up customer response times, and run your back-office on autopilot.",
+    title: "WhatsApp & Business Workflow Automation",
+    outcome: "Instant 24/7 lead responses and zero manual spreadsheet data entry.",
     isFlagship: false,
+    description: "Stop losing customers because nobody answered the phone or replied to a WhatsApp message in time. We set up automated response systems that qualify inbound leads, answer pricing questions, book clinic appointments, and sync every contact straight into your spreadsheet or CRM in seconds.",
     capabilities: [
-      { name: "AI Chatbots" },
-      { name: "WhatsApp Automation" },
-      { name: "CRM Automation" },
-      { name: "Sales Automation" },
-      { name: "Lead Management" },
-      { name: "Appointment Booking" },
-      { name: "Email Automation" },
-      { name: "Internal Business Automation" },
-      { name: "Workflow Automation" },
-      { name: "Document Processing" },
-      { name: "AI Assistants" }
+      { name: "Official WhatsApp Business API" },
+      { name: "Instant Missed-Call Follow-ups" },
+      { name: "Clinic Appointment Booking" },
+      { name: "Lead Sync to Google Sheets" },
+      { name: "Automated Payment Reminders" },
+      { name: "Customer Feedback Collection" }
     ],
-    result: "Businesses save hours every week while providing faster service.",
-    slug: "ai-automation"
+    result: "Lead response times drop from hours to 10 seconds, doubling consultation bookings for local businesses.",
+    pricing: {
+      label: "Workflow Automation Setup",
+      rangeLow: 15000,
+      rangeHigh: 80000,
+      currency: "INR",
+      note: "Depends on workflow count and tool integrations"
+    },
+    slug: "business-automation",
+    link: "/services/business-automation",
+    linkText: "Explore Automation"
   },
   {
     id: "custom-software",
-    order: 3,
+    order: 4,
     emoji: "💻",
-    title: "Custom Software Development",
-    outcome: "Websites, apps, and business systems built for growth.",
-    description: "Generic tools only take you so far. We engineer tailored software solutions—from lead-generating websites to robust internal management systems—designed specifically to fit and scale with your unique business operations.",
+    title: "High-Performance Websites & Custom Software",
+    outcome: "Websites that rank on Google and software built for your exact workflow.",
     isFlagship: false,
+    description: "Move beyond slow, generic WordPress themes. We code custom Next.js websites and Android applications engineered to load in under one second. Whether you need a local clinic booking website, a real estate portal, or an internal factory inventory app in Bhiwadi, we engineer it from scratch.",
     capabilities: [
-      { name: "Business Websites" },
-      { name: "Landing Pages" },
-      { name: "Corporate Websites" },
-      { name: "Android Apps" },
-      { name: "Dashboards" },
-      { name: "Customer Portals" },
-      { name: "Internal Business Systems" },
-      { name: "ERP/Management Systems" },
-      { name: "Custom Web Applications" }
+      { name: "Custom Next.js & React Websites" },
+      { name: "Native & Flutter Android Apps" },
+      { name: "Local SEO & Google Maps Linking" },
+      { name: "Factory Inventory Dashboards" },
+      { name: "Secure Customer Portals" }
     ],
-    result: "Businesses get software tailored to their operations instead of relying on generic tools.",
-    slug: "custom-software"
+    result: "Websites achieve 90+ Google PageSpeed scores and outrank competitors in local search.",
+    pricing: {
+      label: "Custom Engineering",
+      rangeLow: 25000,
+      rangeHigh: 100000,
+      currency: "INR",
+      note: "Tailored to your feature set and database architecture"
+    },
+    slug: "website-development",
+    link: "/services/website-development",
+    linkText: "View Web Services"
   }
 ];
-
-// legacy 6-item structure, superseded by 3-pillar model
-/*
-export type Service = {
-  id: string;
-  title: string;
-  shortDescription: string;
-  fullDescription: string;
-  features: string[];
-  icon: string;
-  slug: string;
-};
-
-export const services: Service[] = [
-  {
-    id: "ai-chatbots",
-    title: "AI Chatbots",
-    shortDescription: "Intelligent virtual assistants that engage visitors, answer queries, and capture leads 24/7.",
-    fullDescription: "Stop losing customers because you couldn't reply in time. Our AI chatbots integrate directly into your website to handle customer support, answer common questions, qualify leads, and seamlessly escalate complex issues to human agents—operating 24/7 without taking a break.",
-    features: [
-      "24/7 Lead capture & qualification",
-      "Instant FAQ resolution",
-      "Human handoff protocols",
-      "Multi-language support"
-    ],
-    icon: "MessageSquare",
-    slug: "ai-chatbots",
-  },
-  {
-    id: "whatsapp-automation",
-    title: "WhatsApp Automation",
-    shortDescription: "Automated follow-ups, appointment reminders, and broadcast campaigns directly on WhatsApp.",
-    fullDescription: "Reach your customers where they already are. We build powerful WhatsApp automation systems that handle appointment reminders, feedback collection, cart recovery, and interactive multi-step conversational flows, turning your WhatsApp into a high-converting sales channel.",
-    features: [
-      "Automated appointment reminders",
-      "Two-way conversational AI flows",
-      "Bulk broadcast campaigns",
-      "CRM & spreadsheet integration"
-    ],
-    icon: "MessageCircle",
-    slug: "whatsapp-automation",
-  },
-  {
-    id: "web-development",
-    title: "Web Development",
-    shortDescription: "High-performance, modern websites designed to convert visitors into paying customers.",
-    fullDescription: "Your website is your digital storefront. We design and build ultra-fast, highly responsive websites tailored for Indian SMBs. From sleek portfolio sites to robust lead-generation landing pages, we ensure your brand looks premium and converts traffic into revenue.",
-    features: [
-      "Custom UI/UX premium design",
-      "Mobile-first responsive architecture",
-      "SEO optimized structure",
-      "Lightning-fast load times"
-    ],
-    icon: "Globe",
-    slug: "web-development",
-  },
-  {
-    id: "android-app-development",
-    title: "Android App Development",
-    shortDescription: "Custom native and cross-platform mobile applications tailored for your business needs.",
-    fullDescription: "Expand your digital footprint with custom Android applications. Whether you need an internal staff management tool, a direct-to-consumer store, or a utility app, we build robust, scalable applications that offer a seamless user experience on any device.",
-    features: [
-      "Native & cross-platform builds",
-      "Custom API integrations",
-      "Push notification systems",
-      "Secure user authentication"
-    ],
-    icon: "Smartphone",
-    slug: "android-app-development",
-  },
-  {
-    id: "business-process-automation",
-    title: "Business Process Automation",
-    shortDescription: "Streamline workflows, sync data across tools, and eliminate repetitive manual tasks.",
-    fullDescription: "Eliminate the busywork that eats up your day. We connect your disjointed software tools—CRMs, email, payment gateways, and spreadsheets—into unified, automated workflows. When a lead comes in, invoices are generated, sheets are updated, and team alerts go out, all without a single click.",
-    features: [
-      "Cross-platform tool syncing (n8n/Make)",
-      "Automated invoice generation",
-      "Dynamic team notifications",
-      "Error-free data entry"
-    ],
-    icon: "Activity",
-    slug: "business-process-automation",
-  },
-  {
-    id: "lead-generation-ai",
-    title: "Lead Gen & AI Consulting",
-    shortDescription: "Strategic AI implementation to discover high-quality B2B/B2C leads on autopilot.",
-    fullDescription: "Don't just wait for customers to find you. We leverage advanced AI scraping, data enrichment, and outbound outreach systems to build a predictable, scalable lead generation engine. We also offer 1-on-1 consulting to help you identify which parts of your business are ready for AI integration.",
-    features: [
-      "AI-driven lead scraping & enrichment",
-      "Automated outbound email/calling",
-      "Custom AI strategy roadmap",
-      "Team training on AI tools"
-    ],
-    icon: "LineChart",
-    slug: "lead-generation-ai-consulting",
-  },
-];
-*/

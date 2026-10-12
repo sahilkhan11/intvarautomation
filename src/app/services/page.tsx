@@ -10,6 +10,7 @@ import Link from "next/link";
 import { servicePillars } from "@/content/services";
 import ServiceSchema from "@/components/seo/ServiceSchema";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
+import NetworkSystemAnimation from "@/components/NetworkSystemAnimation";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,6 +54,7 @@ export default function ServicesPage() {
         eyebrow="OUR SERVICES"
         title="AI Marketing. Automation. Software."
         subtitle="We help businesses get found, automate, and grow with AI."
+        customAnimation={<NetworkSystemAnimation />}
       />
 
       <Section variant="dark" className="pt-8 pb-32">
@@ -134,8 +136,12 @@ export default function ServicesPage() {
                 
                 {/* CTA */}
                 <div className="mt-4">
-                  <Link href="/contact" className="inline-flex items-center justify-center gap-3 w-fit px-8 py-4 rounded-full bg-foreground text-background font-bold uppercase tracking-widest hover:scale-105 transition-transform">
-                    <span>Book a call</span>
+                  <Link 
+                    href={service.link || "/contact"} 
+                    target={service.link && service.link.startsWith("http") ? "_blank" : undefined}
+                    className="inline-flex items-center justify-center gap-3 w-fit px-8 py-4 rounded-full bg-foreground text-background font-bold uppercase tracking-widest hover:scale-105 transition-transform"
+                  >
+                    <span>{service.linkText || "Book a call"}</span>
                     <span>→</span>
                   </Link>
                 </div>
@@ -148,20 +154,20 @@ export default function ServicesPage() {
         <div className="mt-24 max-w-7xl mx-auto flex flex-col items-center gap-8 border-t border-foreground/10 pt-16">
           <span className="text-sm font-medium uppercase tracking-widest opacity-60">Deep Dive into Our Specialized Capabilities</span>
           <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-            <Link href="/services/web-development" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
+            <Link href="/services/website-development" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
               Web Development Solutions
             </Link>
             <Link href="/services/android-app-development" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
               Android App Development
             </Link>
-            <Link href="/services/ai-automation" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
-              WhatsApp & AI Automation
+            <Link href="/services/business-automation" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
+              WhatsApp & Business Automation
             </Link>
-            <Link href="/services/custom-software-development" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
-              Custom Digital Solutions
+            <Link href="/services/software-development" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
+              Custom Software & ERPs
             </Link>
-            <Link href="/services/ai-consultancy" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
-              AI Consultancy Services
+            <Link href="/services/ai-solutions" className="text-lg font-medium hover:text-white/80 underline decoration-foreground/30 underline-offset-4 transition-all">
+              AI Solutions & Chatbots
             </Link>
           </div>
         </div>

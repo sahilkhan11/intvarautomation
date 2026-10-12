@@ -1,10 +1,12 @@
 import TextReveal from "./TextReveal";
+import HeroAnimations from "./HeroAnimations";
 
 export type PageHeroProps = {
   eyebrow: string;
   title: string;
   subtitle?: string;
   variant?: "dark" | "light";
+  customAnimation?: React.ReactNode;
 };
 
 export default function PageHero({
@@ -12,6 +14,7 @@ export default function PageHero({
   title,
   subtitle,
   variant = "dark",
+  customAnimation,
 }: PageHeroProps) {
   const isDark = variant === "dark";
   const bgClass = isDark ? "bg-background text-foreground" : "bg-[#f4f4f4] text-[#0a0a0a]";
@@ -24,7 +27,14 @@ export default function PageHero({
       {/* Background Animated Blob */}
       <div className={`absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] rounded-full blur-[100px] animate-pulse pointer-events-none ${blobClass}`} />
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col gap-6">
+      {/* Custom Background Animation */}
+      {customAnimation && (
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          {customAnimation}
+        </div>
+      )}
+
+      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col gap-6 items-center text-center">
         {/* Eyebrow */}
         <span className="text-xs md:text-sm uppercase tracking-widest opacity-60 font-medium">
           {eyebrow}
@@ -37,7 +47,7 @@ export default function PageHero({
           splitBy="lines"
           triggerOnLoad={true}
           delay={0.1}
-          className="text-5xl md:text-7xl lg:text-[6.5rem] font-bold font-heading uppercase leading-[0.85] tracking-tighter max-w-5xl"
+          className="text-4xl md:text-6xl lg:text-[5rem] font-bold font-heading uppercase leading-[0.85] tracking-tighter max-w-5xl"
         />
 
         {/* Subtitle */}
@@ -46,6 +56,9 @@ export default function PageHero({
             {subtitle}
           </p>
         )}
+
+        {/* Animations Component for every page's Hero */}
+        <HeroAnimations />
       </div>
     </section>
   );

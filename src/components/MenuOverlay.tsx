@@ -42,8 +42,7 @@ const linkVariants: any = {
     }
   })
 };
-
-const links = ["Work", "Services", "About", "Demos", "Contact", "Blog"];
+const links = ["Services", "About", "Portfolio", "Contact", "Blog"];
 
 export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
   return (

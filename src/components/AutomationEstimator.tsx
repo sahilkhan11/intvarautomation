@@ -19,15 +19,14 @@ export default function AutomationEstimator() {
       const problem = formData.get("problem") as string;
       const phoneNumber = formData.get("phoneNumber") as string;
       
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ""}/api/submit.php`, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
         body: JSON.stringify({
-          access_key: "87c298fd-71c0-44df-a656-a8bee5ecfc91",
-          subject: "New Automation Estimate Request",
+          formType: "estimator",
           problem,
           phoneNumber
         })

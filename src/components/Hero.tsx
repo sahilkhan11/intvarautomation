@@ -1,12 +1,12 @@
-import Link from "next/link";
 import TextReveal from "./TextReveal";
-import HeroMarquee from "./HeroMarquee";
-
+import HeroAnimations from "./HeroAnimations";
 import HeroCanvasWrapper from "./HeroCanvasWrapper";
+
+import Link from "next/link";
 
 export default function Hero({ children }: { children?: React.ReactNode }) {
   return (
-    <section className="relative w-full h-screen bg-background flex flex-col justify-center overflow-hidden px-4 md:px-8 lg:px-12 pt-24 pb-8">
+    <section className="relative w-full min-h-screen bg-background flex flex-col justify-center overflow-hidden px-4 md:px-8 lg:px-12 pt-32 pb-8">
       {/* 3D Canvas Background */}
       <div className="absolute inset-0 z-0">
         <HeroCanvasWrapper />
@@ -17,58 +17,55 @@ export default function Hero({ children }: { children?: React.ReactNode }) {
         
         {/* Top Row */}
         <div className="flex justify-between items-start pt-8 pointer-events-auto">
-          <div className="flex flex-col text-xs md:text-sm uppercase tracking-widest opacity-70 font-medium gap-1">
-            <span>AI MARKETING & MANAGEMENT</span>
-            <span>SOFTWARE</span>
-          </div>
-          <div className="flex flex-col text-right items-end max-w-sm md:max-w-md">
-            <p className="text-sm md:text-base opacity-80 mb-2">Intvar Suite runs your leads, WhatsApp replies, bookings, and follow-ups automatically — so your business grows even on the days you don&apos;t have time to chase it.</p>
-            <Link href="#about" className="text-sm font-medium hover:opacity-70 transition-opacity group flex items-center gap-2 py-2">
-              <span className="underline underline-offset-4">More about us</span>
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
-            </Link>
-          </div>
         </div>
 
         {/* Center Row */}
-        <div className="flex flex-col w-full mt-auto mb-auto justify-center pt-12 pointer-events-auto">
+        <div className="flex flex-col w-full mt-auto mb-auto justify-center pt-12 pointer-events-auto items-center text-center">
+          
+          <div className="mb-4 inline-block px-5 py-2 rounded-full border border-foreground/20 bg-background/60 backdrop-blur-md">
+             <span className="text-xs md:text-sm font-semibold tracking-wider text-foreground/90 uppercase">
+               Custom Websites, Software & Automation in Rajasthan
+             </span>
+          </div>
+
           <TextReveal 
             as="div"
             splitBy="words"
             triggerOnLoad={true}
             delay={0.2}
-            className="text-[8vw] md:text-[5vw] font-bold font-heading uppercase leading-[0.85] tracking-tighter"
+            className="text-[4.8vw] md:text-[3vw] font-bold font-heading uppercase leading-[0.85] tracking-tighter"
           >
             {children || <h1 className="sr-only">One system to find, follow up, and keep every customer.</h1>}
           </TextReveal>
           
+          <HeroAnimations />
+
+          {/* Quick Hero CTAs */}
+          <div className="mt-6 flex flex-col sm:flex-row items-center gap-4 z-20">
+            <Link
+              href="/contact"
+              className="px-8 py-3.5 rounded-full bg-foreground text-background font-bold uppercase tracking-wider text-xs md:text-sm hover:scale-105 transition-transform shadow-lg"
+            >
+              Get Free Local Audit
+            </Link>
+            <Link
+              href="https://wa.me/917372908326?text=Hi%20Sahil,%20I%20want%20to%20know%20more%20about%20Intvar%20software%20and%20automation"
+              target="_blank"
+              className="px-8 py-3.5 rounded-full border border-foreground/30 bg-background/60 backdrop-blur-sm hover:bg-foreground/10 font-bold uppercase tracking-wider text-xs md:text-sm transition-all"
+            >
+              WhatsApp +91 7372908326
+            </Link>
+          </div>
+
           {/* Horizontal Rule */}
-          <div className="w-full h-[1px] bg-foreground/20 my-6 md:my-8" />
+          <div className="w-full h-[1px] bg-foreground/20 my-6 md:my-8 hidden" />
           
           {/* GSAP Scroll-Triggered Marquee */}
-          <HeroMarquee />
+          {/* <HeroMarquee /> */}
         </div>
 
         {/* Bottom Row */}
         <div className="flex justify-between items-end pb-4 pointer-events-auto">
-          <div className="flex flex-col text-xs md:text-sm uppercase tracking-widest opacity-70 gap-1 hidden sm:flex">
-            <span>Based in Rajasthan, India</span>
-            <span>Working Global</span>
-          </div>
-          
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-4 md:bottom-8 flex flex-col items-center gap-2 opacity-70 hidden sm:flex">
-            <span className="text-[10px] uppercase tracking-widest">Scroll</span>
-            <div className="w-[1px] h-12 bg-foreground/20 relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1/2 bg-foreground animate-bounce" />
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2 text-xs md:text-sm uppercase tracking-widest opacity-80 ml-auto sm:ml-0">
-            <span>From idea to outcome</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-            </svg>
-          </div>
         </div>
 
       </div>

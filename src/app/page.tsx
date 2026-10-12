@@ -34,13 +34,13 @@ export default function Home() {
         }}
       />
       <Hero>
-        <h1>One system to find, follow up, and keep every customer.</h1>
+        Websites that bring clients. Systems that run your business.
       </Hero>
       
       {/* Phase 4: About Strip (Light) */}
       <Section variant="light" className="py-24 md:py-32 relative">
         <div className="flex flex-col gap-8 max-w-5xl mx-auto pb-4">
-          <h2 className="text-sm font-medium uppercase tracking-widest opacity-70">Most agencies sell you tools. We give you a system.</h2>
+          <h2 className="text-sm font-medium uppercase tracking-widest opacity-70">Custom software, school ERPs, restaurant billing and WhatsApp systems built for local businesses</h2>
           
           <div className="mt-8 mb-2">
             <AutomationEstimator />

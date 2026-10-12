@@ -51,7 +51,22 @@ export function generateServiceSchema(options: {
     "description": options.description,
     "provider": {
       "@type": "LocalBusiness",
-      "name": options.providerName || "Intvar Automation"
+      "name": options.providerName || "Intvar Automation",
+      "telephone": "+917372908326",
+      "priceRange": "₹₹",
+      "image": "https://intvarautomation.online/images/concept 1.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "200 Feet Road, opposite Sundarvan Resort",
+        "addressLocality": "Alwar",
+        "addressRegion": "Rajasthan",
+        "postalCode": "301001",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://instagram.com/intvar.automate",
+        "https://youtube.com/@intvar.ai.solutions"
+      ]
     },
     "areaServed": options.areaServed ? {
       "@type": "City",

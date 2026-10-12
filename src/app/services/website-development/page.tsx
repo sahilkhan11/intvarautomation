@@ -7,22 +7,23 @@ import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import HowToSchema from "@/components/seo/HowToSchema";
 
 export const metadata: Metadata = {
-  title: "Website Development Company in Alwar & Rajasthan",
-  description: "High-performance, lead-generating websites tailored for SMBs and clinics in Alwar. We build sites that rank and convert.",
+  title: "High-Performance Website & Web App Development | Intvar",
+  description: "Intvar Automation builds blazing-fast, custom websites and web applications using Next.js and React. Move beyond slow templates and get a site engineered to convert.",
   alternates: {
-    canonical: "/services/website-development"
+    canonical: "https://intvarautomation.online/services/website-development"
   }
 };
 
 export default function WebsiteDevelopmentPage() {
-  const schemaDescription = "Custom web development, design, and lead-generation websites for clinics, real estate, and SMBs in Alwar, Jaipur, and Rajasthan.";
+  const schemaDescription = "Custom web development, high-performance web applications, and lead-generation websites built with Next.js and React.";
   
   return (
     <main className="flex min-h-screen flex-col">
       <ServiceSchema 
-        serviceName="Web Development" 
+        serviceName="Web & Web App Development" 
         description={schemaDescription}
-        areaServed={["Alwar", "Rajasthan"]}
+        areaServed={["India", "Global"]}
+        url="https://intvarautomation.online/services/website-development"
       />
       <BreadcrumbSchema 
         items={[
@@ -32,84 +33,157 @@ export default function WebsiteDevelopmentPage() {
         ]}
       />
       <HowToSchema 
-        name="How we build your website"
-        description="Our step-by-step website development process"
+        name="How we build your web application"
+        description="Our step-by-step custom website and web app development process."
         steps={[
-          { name: "Strategy & Architecture", text: "We analyze your target audience and map out user journeys that drive conversions." },
-          { name: "Design & Development", text: "Custom UI/UX design built on modern, lightning-fast frameworks without clunky builders." },
-          { name: "Launch & Local SEO", text: "We deploy the site and index it with localized schema markup so you dominate local search." }
+          { name: "Architecture & UI/UX", text: "We map out user journeys that drive conversions and design functional mockups before writing any code." },
+          { name: "Custom Development", text: "We code from scratch using modern frameworks (Next.js, React) to ensure sub-second load times and infinite scalability." },
+          { name: "Deployment & Technical SEO", text: "We deploy the application on global CDNs and implement structured JSON-LD schema so search engines can read it instantly." }
         ]}
       />
 
       <PageHero 
         variant="dark"
-        eyebrow="WEB DEVELOPMENT"
-        title="Website Development Company in Alwar"
-        subtitle="We build high-performance, lead-generating websites for businesses in Rajasthan. No bloated WordPress themes—just fast, custom code that ranks and converts."
+        eyebrow="WEB ENGINEERING"
+        title="High-Performance Website & Web App Development"
+        subtitle="We build blazing-fast, custom websites and web applications using modern React architecture. No bloated templates—just clean code engineered to scale and convert."
       />
 
-      <Section variant="dark" className="py-24">
-        <div className="max-w-4xl mx-auto flex flex-col gap-12">
+      {/* Value Section */}
+      <Section variant="light" className="py-24">
+        <div className="max-w-4xl mx-auto flex flex-col gap-8 px-4 md:px-0">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold uppercase tracking-tight">
+            Stop Settling for Slow, Template-Based Websites.
+          </h2>
+          <div className="text-lg md:text-xl font-medium opacity-80 space-y-6 leading-relaxed">
+            <p>
+              Most businesses settle for dragging-and-dropping site builders or bloated WordPress themes that look identical to their competitors. The result? A website that takes 5 seconds to load, frustrating users and tanking your Google rankings. Your website shouldn't just be an online brochure—it must act as your hardest-working digital sales representative.
+            </p>
+            <p>
+              At Intvar Automation, we engineer web experiences from the ground up. We code entirely from scratch using Next.js and React—the exact same technology stack powering Netflix, Nike, and Notion. This guarantees sub-second load times, superior technical SEO, and the ability to seamlessly integrate advanced features like AI chatbots, live inventory, and custom CRMs directly into your site.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/* Services Covered Block */}
+      <Section variant="dark" className="py-20 border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-16">
+          <div>
+            <h2 className="text-sm font-medium uppercase tracking-widest opacity-70 mb-8">Engineering Capabilities</h2>
+            <h3 className="text-3xl md:text-4xl font-heading font-bold mb-6">Services Covered</h3>
+            <p className="opacity-70 max-w-md">We build modern digital infrastructure tailored exactly to your operational bottlenecks and growth targets.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              "Custom Web Application Development",
+              "Progressive Web Apps (PWAs)",
+              "Next.js / React Architecture",
+              "High-Conversion Landing Pages",
+              "B2B Portals & Dashboards",
+              "Headless E-commerce Solutions"
+            ].map((service, i) => (
+              <div key={i} className="bg-white/5 border border-white/10 p-6 rounded-2xl flex items-start gap-4 hover:bg-white/10 transition-colors">
+                <span className="text-white opacity-40 font-mono mt-1">0{i + 1}</span>
+                <span className="font-bold">{service}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* Proof Section - Real Projects */}
+      <Section variant="light" className="py-20 md:py-28 border-t border-black/10">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="mb-16 text-center md:text-left">
+            <h2 className="text-sm font-medium uppercase tracking-widest opacity-70 mb-4">Our Web Portfolio</h2>
+            <h3 className="text-3xl md:text-5xl font-heading font-bold">Web Platforms Engineered by Intvar</h3>
+          </div>
           
-          <div className="flex flex-col gap-6">
-            <h2 className="text-3xl font-heading font-bold uppercase">The Problem with Most Websites</h2>
-            <p className="opacity-70 leading-relaxed text-lg">
-              Most local businesses in Rajasthan settle for slow, template-based websites that look identical to their competitors and fail to generate actual leads. A website shouldn't just be an online brochure—it should be your hardest-working sales rep. If your site takes more than 3 seconds to load or doesn't have a clear path to capture contact details, you are losing money to the business next door.
-            </p>
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* KisanBazaar Project */}
+            <div className="bg-[#0a0a0a] text-white p-8 md:p-12 rounded-3xl flex flex-col justify-between group hover:scale-[1.02] transition-transform">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-widest opacity-50 mb-4 block">Web Dev • Agri-Tech PWA</span>
+                <h4 className="text-3xl font-bold mb-4">KisanBazaar Platform</h4>
+                <p className="opacity-80 leading-relaxed mb-6">
+                  Local farmers were struggling to reach end consumers directly, relying on middlemen who took massive commissions. They needed a lightweight platform accessible on low-end devices.
+                </p>
+                <p className="opacity-80 leading-relaxed mb-8">
+                  We engineered a high-performance Progressive Web App (PWA) using Next.js. We integrated a multi-language voice-to-text feature for the farmer dashboard and real-time WhatsApp notifications, leading to 500+ farmer onboards in just 6 months.
+                </p>
+              </div>
+              <Link href="/portfolio" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:opacity-70 transition-opacity">
+                <span>View Portfolio</span>
+                <span>→</span>
+              </Link>
+            </div>
 
-          <div className="flex flex-col gap-6">
-            <h2 className="text-3xl font-heading font-bold uppercase">Our Approach</h2>
-            <p className="opacity-70 leading-relaxed text-lg">
-              We don't use dragging-and-dropping site builders. We code from scratch using Next.js and React—the same tech stack used by companies like Netflix and Nike. This guarantees a sub-second load time, giving you a massive advantage in Google rankings. We integrate WhatsApp buttons, automated contact forms, and local SEO schema directly into the code so your phone actually rings.
-            </p>
+            {/* Modulus Smart School Project */}
+            <div className="bg-[#0a0a0a] text-white p-8 md:p-12 rounded-3xl flex flex-col justify-between group hover:scale-[1.02] transition-transform">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-widest opacity-50 mb-4 block">Web Dev • Education Portal</span>
+                <h4 className="text-3xl font-bold mb-4">Modulus Smart School</h4>
+                <p className="opacity-80 leading-relaxed mb-6">
+                  The institution relied on paper-based attendance and manual fee collection, causing massive administrative bottlenecks and fragmented communication.
+                </p>
+                <p className="opacity-80 leading-relaxed mb-8">
+                  We built a secure, centralized custom web portal featuring digital attendance tracking, automated fee reminders via SMS/WhatsApp, and a dedicated parent dashboard. The web application reduced administrative paperwork by 90% and drastically cut fee collection delays.
+                </p>
+              </div>
+              <Link href="/portfolio" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:opacity-70 transition-opacity">
+                <span>View Portfolio</span>
+                <span>→</span>
+              </Link>
+            </div>
           </div>
+        </div>
+      </Section>
 
-          <div className="flex flex-col gap-6">
-            <h2 className="text-3xl font-heading font-bold uppercase">How We Work</h2>
-            <ol className="list-decimal list-inside opacity-70 leading-relaxed text-lg">
-              <li><strong>Discovery:</strong> We sit down with you to understand your exact customer profile and what action you want them to take (e.g., booking an appointment, requesting a quote).</li>
-              <li><strong>Prototyping:</strong> We create a functional mockup so you can see exactly how the site will look and feel before we write a single line of code.</li>
-              <li><strong>Development & Handover:</strong> We build the site, connect your CRM/WhatsApp, optimize for Google, and train you on how to manage your incoming leads.</li>
-            </ol>
-          </div>
-
-          {/* FAQ Section */}
-          <div className="mt-12 flex flex-col gap-8">
-            <h2 className="text-3xl font-heading font-bold uppercase">Frequently Asked Questions</h2>
+      {/* FAQ Section */}
+      <Section variant="dark" className="py-24">
+        <div className="max-w-4xl mx-auto px-4 md:px-0">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold mb-12 uppercase tracking-tight text-center">
+            Frequently Asked Questions
+          </h2>
+          
+          <div className="space-y-6">
+            <div className="bg-white/5 border border-white/10 p-8 rounded-2xl">
+              <h3 className="font-bold text-xl mb-4">Why do you use Next.js and React instead of WordPress?</h3>
+              <p className="opacity-70 leading-relaxed">
+                WordPress relies heavily on third-party plugins that inherently slow down page speeds and introduce severe security vulnerabilities. By custom coding with Next.js and React, we deliver sub-second page loads, impenetrable security, and total design freedom. This directly results in higher Google rankings and better user conversion rates.
+              </p>
+            </div>
             
-            <div className="flex flex-col gap-6">
-              <div className="border-b border-foreground/10 pb-6">
-                <h3 className="font-bold text-xl mb-2">How long does it take to launch a website for my business?</h3>
-                <p className="opacity-70">A standard 5-page business website takes us about 2 to 3 weeks from kickoff to launch. Custom portals or e-commerce setups take slightly longer, but we will give you a strict timeline before we begin.</p>
-              </div>
-              <div className="border-b border-foreground/10 pb-6">
-                <h3 className="font-bold text-xl mb-2">Will my website rank on Google in Alwar?</h3>
-                <p className="opacity-70">Yes. We build sites specifically structured for local SEO. We include proper H1 tags, meta descriptions, and localized JSON-LD schema (e.g., tagging you as a &quot;LocalBusiness in Alwar&quot;) which explicitly tells Google to show your site to local searchers.</p>
-              </div>
+            <div className="bg-white/5 border border-white/10 p-8 rounded-2xl">
+              <h3 className="font-bold text-xl mb-4">How does page speed impact my SEO and sales?</h3>
+              <p className="opacity-70 leading-relaxed">
+                Google explicitly uses "Core Web Vitals" (page speed and stability) as a major ranking factor. Statistically, if your website takes longer than 3 seconds to load, over 50% of mobile users will abandon it. A blazing-fast custom web app keeps users engaged and signals to search engines that your site is high quality.
+              </p>
+            </div>
+
+            <div className="bg-white/5 border border-white/10 p-8 rounded-2xl">
+              <h3 className="font-bold text-xl mb-4">Can you integrate my CRM or a custom backend into the website?</h3>
+              <p className="opacity-70 leading-relaxed">
+                Yes. Because we build everything from scratch, we can easily connect your website to any external APIs—including Salesforce, custom ERPs, WhatsApp Business APIs, or payment gateways—turning your website into a fully functional operational tool.
+              </p>
             </div>
           </div>
 
           {/* Internal Links & CTA */}
-          <div className="mt-16 flex flex-col gap-8 items-center text-center border-t border-foreground/10 pt-16">
-            <h2 className="text-2xl font-bold uppercase">Ready to upgrade your digital presence?</h2>
+          <div className="mt-20 flex flex-col gap-8 items-center text-center border-t border-foreground/10 pt-16">
+            <h2 className="text-2xl font-bold uppercase">Ready to build your digital infrastructure?</h2>
             <Link href="/contact" className="px-8 py-4 rounded-full bg-foreground text-background font-bold uppercase tracking-widest hover:scale-105 transition-transform">
-              Get a Quote
+              Get a Free Technical Audit
             </Link>
 
-            <div className="mt-12 flex flex-wrap justify-center gap-4 text-sm opacity-60">
-              <span>Explore our other services:</span>
-              <Link href="/services/software-development" className="underline hover:opacity-100">Software Development</Link>
+            <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm font-medium opacity-60">
+              <span className="uppercase tracking-widest mr-2">Related Services:</span>
+              <Link href="/services/software-development" className="underline hover:opacity-100">Custom Software</Link>
               <span>|</span>
-              <Link href="/services/business-automation" className="underline hover:opacity-100">Business Automation</Link>
-            </div>
-            <div className="mt-4 flex flex-wrap justify-center gap-4 text-sm opacity-60">
-              <span>Industries we serve:</span>
-              <Link href="/industries/hotels" className="underline hover:opacity-100">Hotels</Link>
+              <Link href="/services/ai-solutions" className="underline hover:opacity-100">AI Chatbots</Link>
               <span>|</span>
-              <Link href="/industries/restaurants" className="underline hover:opacity-100">Restaurants</Link>
-              <span>|</span>
-              <Link href="/industries/real-estate" className="underline hover:opacity-100">Real Estate</Link>
+              <Link href="/services/android-app-development" className="underline hover:opacity-100">Android Development</Link>
             </div>
           </div>
 

@@ -5,7 +5,6 @@ import "./globals.css";
 import SiteShell from "../components/SiteShell";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import LeadPopup from "../components/LeadPopup";
 import { generateLocalBusinessSchema } from "@/lib/seo/schema";
 
 const inter = Inter({
@@ -106,7 +105,6 @@ export default function RootLayout({
         />
         <SiteShell>
           <Navbar />
-          <LeadPopup />
           {children}
           <Footer />
         </SiteShell>

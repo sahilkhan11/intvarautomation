@@ -17,8 +17,8 @@ export default function AboutPage() {
       <PageHero 
         variant="dark"
         eyebrow="ABOUT INTVAR"
-        title="We build systems so you can build your business."
-        subtitle="Intvar is an AI automation studio dedicated to Indian SMBs. We replace manual chaos with intelligent workflows that find leads, book appointments, and follow up—while you sleep."
+        title="We build AI systems which helps in building your business."
+        subtitle="Intvar is an AI company for Indian businesses, helping them integrate AI into different processes to reduce wasted time. We build complete systems, not just single solutions, providing a fully connected environment."
       />
 
       {/* 2. Light Section: Who we are & 3. How we work */}
@@ -31,7 +31,7 @@ export default function AboutPage() {
               <h2 className="text-sm font-medium uppercase tracking-widest opacity-60">Who We Are</h2>
               <TextReveal 
                 as="p"
-                text="Intvar Automation is a tight-knit team of 5-6 people based in Alwar, Rajasthan. We started this studio to help local clinics, shops, and traders escape the spreadsheet chaos and missed-call logs. We don't sell bloated software or vanity metrics—we build tailored, real AI workflows that automatically manage your back-office so you can focus entirely on running your business."
+                text="Intvar Agency takes great pride in the work of our highly skilled engineers. We started this company to help Indian businesses that lack an online presence and are losing ground to quick commerce. To change this, we build websites, handle SEO, and create mobile applications and custom software tailored to their needs. What makes us unique is that none of our software operates in isolation—everything is connected and works together seamlessly."
                 splitBy="lines"
                 className="text-2xl md:text-4xl font-medium leading-snug tracking-tight"
               />
@@ -79,10 +79,10 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 flex-1 justify-end">
-            <Counter end={50} suffix="+" label="Projects Launched" />
-            <Counter end={1000} suffix="+" label="Cold Calls Made" />
+            <Counter end={15} suffix="+" label="Projects Launched" />
+            <Counter end={2000} suffix="+" label="Business Owners Consulted" />
             <Counter end={20} suffix="+" label="Hours Saved / Week" />
-            <Counter end={100} suffix="%" label="Client Satisfaction" />
+            <Counter end={94} suffix="%" label="Client Satisfaction" />
           </div>
         </div>
       </Section>
